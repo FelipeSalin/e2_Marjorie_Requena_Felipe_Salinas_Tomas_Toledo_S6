@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Inventario</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+    
+    <body class="bg-light">
+        <!-- NAVBAR -->
+        <a class="navbar navbar-expand-lg" style="background-color: #222;">
+            <a class="navbar-brand d-flex align-items-center" href="/index.html"
+                style="color: rgb(153, 132, 104); font-weight: bold;">
+                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+                inicio
+            </a>
+        </a>
+    
+        <div class="container py-5">
+            <h1 class="text-center mb-4">Registro de Inventario</h1>
+    
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Actualizar inventario</h5>
+                    <form id="inventarioForm">
+                        <div class="row g-3">
+
+                            <!-- Nombre del modelo -->
+                            <div class="col-md-4">
+                                <label for="modelo" class="form-label">Nombre del modelo</label>
+                                <input type="text" class="form-control" id="modelo" placeholder="Ej: Galaxy S24" required>
+                            </div>
+
+                            <!-- ID -->
+                            <div class="col-md-4">
+                                <label for="id" class="form-label">ID de identificación</label>
+                                <input type="text" class="form-control" id="id" placeholder="Ej: T001" required>
+                            </div>
+
+                            <!-- Cantidad -->
+                            <div class="col-md-4">
+                                <label for="cantidad" class="form-label">Cantidad </label>
+                                <input type="number" class="form-control" id="cantidad" value="1" required>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary">Actualizar inventario</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Tabla de inventario -->
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Inventario actual</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Modelo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaInventario">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            
+            <!-- Script para manejar registros -->
+            <script>
+            
+                const inventario = {};
+
+                document.getElementById("inventarioForm").addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    // Obtener valores
+                    const modelo = document.getElementById("modelo").value.trim();
+                    const id = document.getElementById("id").value.trim();
+                    const cantidad = parseInt(document.getElementById("cantidad").value);
+
+                    // actualizar cantidad
+                    if (inventario[id]) {
+                        inventario[id].cantidad += cantidad;
+                    } else {
+                        inventario[id] = { modelo: modelo, cantidad: cantidad };
+                    }
+
+                    if (inventario[id].cantidad < 0) {
+                        inventario[id].cantidad = 0;
+                    }
+
+                    // Actualizar tabla
+                    actualizarTabla();
+
+                    this.reset();
+                });
+
+                function actualizarTabla() {
+                    const tabla = document.getElementById("tablaInventario");
+                    tabla.innerHTML = "";
+
+                    for (const id in inventario) {
+                        const fila = `
+                      <tr>
+                        <td>${id}</td>
+                        <td>${inventario[id].modelo}</td>
+                        <td>${inventario[id].cantidad}</td>
+                      </tr>
+                    `;
+                        tabla.innerHTML += fila;
+                    }
+                }
+            </script>
+
+    <footer class="mt-5">
+        <p>Todos los derechos reservados. MFT Store &copy; 2025</p>
+        <p><a href="mailto:accesorios@tienda.com" style="color: #ddd">" "</a></p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    </body>
+
+</html>

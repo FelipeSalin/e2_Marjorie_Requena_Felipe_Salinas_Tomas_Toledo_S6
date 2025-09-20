@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - MFT Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #222;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/index.html" style="color: rgb(153, 132, 104); font-weight: bold;">
+                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+                MFT Store
+            </a>
+
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+
+                <div class="d-flex ms-auto align-items-center gap-2">
+                    <!-- Botón de inicio de sesión -->
+                    <a href="/formulario_ingreso.html" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    <!-- Una vez iniciada la sesión, se ocultarían los botones de "inicio sesión"
+                        y de "registrate acá". En su lugar aparecerían los de "Modificar perfil" y " cerrar sesión" 
+                        Modificar perfil redireccionaría a /formulario_modificacionperfil.html-->
+
+
+                    <!-- Botón de registro -->
+                    <a href="/formulario_registro.html" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
+
+                    <a href="#" id="btnLogout" class="btn btn-danger btn-sm d-none">Cerrar sesión</a>
+
+                    <!-- Barra de búsqueda -->
+                    <form class="d-flex ms-3" role="search">
+                        <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
+                        <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN DE CATEGORÍAS -->
+    <section class="categorias-container container mt-4">
+        <div class="top-bar text-center mb-4">
+            <img src="/assets/LogoEmpresa.png" alt="Logo" class="img-fluid d-block mx-auto">
+            <h1>Bienvenido a MFT Store</h1>
+            <p>¿Necesitas algún accesorio para proteger tu teléfono?
+                ¿Quedas corto con la batería?
+                ¿Te hacen falta audífonos?
+                ¡Revisa lo que MFT Store tiene para ti!
+            </p>
+        </div>
+
+        <!-- Categorias -->
+        <div class="row g-4">
+            <!-- Cableado -->
+            <div class="col-md-6 col-lg-4">
+                <a href="/cableado.html" class="categoria-card">
+                    <img src="/assets/images/carga-y-cableado/CargadorSamsung.webp" alt="Cableado y Carga">
+                    <div class="overlay">
+                        <h3>Cableado y Carga</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Audio -->
+            <div class="col-md-6 col-lg-4">
+                <a href="/audio.html" class="categoria-card">
+                    <img src="/assets/images/audio-y-sonido/JBLFlip.webp" alt="Audio y Sonido">
+                    <div class="overlay">
+                        <h3>Audio y Sonido</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Carcasas -->
+            <div class="col-md-6 col-lg-4">
+                <a href="/carcasas.html" class="categoria-card">
+                    <img src="/assets/images/carcasas/iphone/iphone16promax1.png" alt="Carcasas">
+                    <div class="overlay">
+                        <h3>Carcasas</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Soportes -->
+            <div class="col-md-6 col-lg-4">
+                <a href="/soporte.html" class="categoria-card">
+                    <img src="/assets/images/soportes-y-monturas/SoporteLamicall.webp" alt="Soportes">
+                    <div class="overlay">
+                        <h3>Soportes</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Energía -->
+            <div class="col-md-6 col-lg-4">
+                <a href="/bateria.html" class="categoria-card">
+                    <img src="/assets/images/baterias-y-energia/CargadorSolarAnker.webp" alt="Baterías">
+                    <div class="overlay">
+                        <h3>Baterías</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-5">
+        <p>Todos los derechos reservados. MFT Store &copy; 2025</p>
+        <p><a href="mailto:accesorios@tienda.com" style="color: #ddd">¡Contáctanos a través de nuestro email!</a></p>
+        <p><a href="tel:+56912345678" style="color: #ddd">¡Y si prefieres una llamada!: +56912345678</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

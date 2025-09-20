@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFT Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles2.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #222;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/index2.html"
+                style="color: rgb(153, 132, 104); font-weight: bold;">
+                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+                MFT Store
+            </a>
+
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+
+                <!-- Categorías en el menú 
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 8px;">
+                    <li class="nav-item"><a class="nav-link text-light" href="/assets/images/Adaptador.png">Cableado y Carga</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/assets/images/Apple-AirPods.png">Audio y Sonido</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/assets/images/CableAnker.jpg">Protección</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/assets/images/Cargador.jpg">Soportes</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/assets/images/CableAnker.jpg">Baterías</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/assets/images/Cargador2.jpg">Accesorios Extra</a></li>
+                </ul> -->
+
+                <!-- Botón de inicio de sesión -->
+                <a href="/formulario_ingreso.html" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar
+                    sesión</a>
+
+                <!-- Botón de registro -->
+                <a href="/formulario_registro.html" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
+
+                <!-- Barra de búsqueda -->
+                <form class="d-flex ms-3" role="search">
+                    <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
+                    <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+        <div class="container">
+            <h1 class="text-center">Modificar Perfil</h1>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="formulario_modificacion" action="" novalidate>
+                                <div class="mb-3">
+                                    <label for="modifNombre" class="form-label">Nombre Completo <span style="color: red;">*</span></label>
+                                    <input type="text" class="form-control" name="modifNombre" id="modifNombre" required autocomplete="on"
+                                        placeholder="Ingrese su nombre completo">
+                                    <small class="text-danger" id="modifNombre-error"></small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modifUsuario" class="form-label">Nombre de Usuario <span style="color: red;">*</span></label>
+                                    <input type="text" class="form-control" name="modifUsuario" id="modifUsuario"
+                                        placeholder="Ingrese un nombre de usuario">
+                                    <small class="text-danger" id="modifUsuario-error"></small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modifMail" class="form-label">Correo Electrónico <span style="color: red;">*</span></label>
+                                    <input type="email" class="form-control" name="modifMail" id="modifMail" required autocomplete="on"
+                                        placeholder="Ingrese su correo electrónico">
+                                    <small class="text-danger" id="modifMail-error"></small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modifPass" class="form-label">Contraseña <span style="color: red;">*</span></label>
+                                    <input type="password" class="form-control" name="modifPass" id="modifPass" required autocomplete="on"
+                                        placeholder="Ingrese su contraseña">
+                                    <small class="text-danger" id="modifPass-error"></small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modifPass2" class="form-label">Repita Contraseña <span style="color: red;">*</span></label>
+                                    <input type="password" class="form-control" name="modifPass2" id="modifPass2" required autocomplete="off"
+                                        placeholder="Repita su contraseña">
+                                    <small class="text-danger" id="modifPass2-error"></small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modifDomicilio" class="form-label">Domicilio</label>
+                                    <input type="text" class="form-control" name="modifDomicilio" id="modifDomicilio" required autocomplete="on"
+                                        placeholder="Indicar dirección de despacho">
+                                </div>
+
+                                <span style="color: red;">*</span> = Campo Obligatorio 
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary"
+                                        style="width: 40%; margin-bottom: 5px">Guardar cambios</button>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="reset" class="btn btn-secondary" style="width: 40%;">Limpiar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer class="mt-5">
+            <p>Todos los derechos reservados. MFT Store &copy; 2025</p>
+            <p><a href="mailto:accesorios@tienda.com" style="color: #ddd">¡Contáctanos a través de nuestro email!</a>
+            </p>
+            <p><a href="tel:+56912345678" style="color: #ddd">¡Y si prefieres una llamada!: +56912345678</a></p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="/js/scripts.js"></script>
+</body>
+
+</html>

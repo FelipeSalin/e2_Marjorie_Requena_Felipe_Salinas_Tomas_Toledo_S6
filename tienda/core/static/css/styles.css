@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+header {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+}
+
+header h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+
+nav ul li {
+    margin: 5px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #5a2d82;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    text-align: justify;
+    max-width: 800px;
+    margin: auto;
+}
+
+.accesorio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.accesorio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.accesorio img {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 6px;
+}
+
+.accesorio .info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accesorio h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.accesorio a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.accesorio a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Tarjetas de categoría */
+.categoria-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    text-decoration: none;
+    color: white;
+}
+
+.categoria-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: brightness(70%);
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.categoria-card .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoria-card h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+.categoria-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(50%);
+}
+
+.categoria-card:hover h3 {
+    color: #f9c74f;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; 
+    object-fit: contain;
+}
