@@ -17,6 +17,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro
+
 urlpatterns = [
     #path('admin/', admin.site.urls),
+    path("", index_estatico, name="index"),
+    path("contacto/", contacto, name="contacto"),
+    path("audio/", audio, name="audio"),
+    path("bateria/", bateria, name="bateria"),
+    path("cableado/", cableado, name="cableado"),
+    path("carcasas/", carcasas, name="carcasas"),
+    path("soporte/", soporte, name="soporte"),
+    path("compra/", compra, name="compra"),
+    path("pago/", pago, name="pago"),
+    path("inventario/", inventario, name="inventario"),
+    path("formulario_ingreso/", formulario_ingreso, name="formulario_ingreso"),
+    path("formulario_modificacionperfil/", formulario_modificacionperfil, name="formulario_modificacionperfil"),
+    path("formulario_pwolvidada/", formulario_pwolvidada, name="formulario_pwolvidada"),
+    path("formulario_recuperarpw/", formulario_recuperarpw, name="formulario_recuperarpw"),
+    path("formulario_registro/", formulario_registro, name="formulario_registro"),
 ]
