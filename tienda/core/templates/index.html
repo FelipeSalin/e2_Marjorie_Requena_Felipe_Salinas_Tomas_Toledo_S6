@@ -29,18 +29,19 @@
 
                 <div class="d-flex ms-auto align-items-center gap-2">
                     <!-- Botón de inicio de sesión -->
-                    <a href="/formulario_ingreso.html" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Iniciar sesión</a>
+
                     <!-- Una vez iniciada la sesión, se ocultarían los botones de "inicio sesión"
                         y de "registrate acá". En su lugar aparecerían los de "Modificar perfil" y " cerrar sesión" 
                         Modificar perfil redireccionaría a /formulario_modificacionperfil.html-->
 
 
                     <!-- Botón de registro -->
-                    <a href="/formulario_registro.html" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    <a href="{% url 'formulario_registro' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
 
                     <a href="#" id="btnLogout" class="btn btn-danger btn-sm d-none">Cerrar sesión</a>
 
-                    <!-- Barra de búsqueda -->
+                    <!-- Barra de búsqueda -->  
                     <form class="d-flex ms-3" role="search">
                         <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
                         <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
