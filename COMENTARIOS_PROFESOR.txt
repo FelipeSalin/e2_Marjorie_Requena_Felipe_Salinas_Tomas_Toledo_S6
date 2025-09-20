@@ -1,0 +1,33 @@
+Mejoras que se deben implementar en base a los comentarios del profesor en la Evaluación Sumativa 1
+
+    1. En primer lugar, el proyecto debe tener las páginas HTML organizadas en carpetas 
+       según su funcionalidad o contexto, ya que actualmente todas se encuentran en la raíz,
+       lo que dificulta el mantenimiento, la escalabilidad del código y el posicionamiento SEO del sitio.
+
+    2. En segundo lugar, el menú de navegación podría permitir la navegación por categorías,
+       lo que enriquecería la experiencia del usuario y facilitaría el acceso a funcionalidades importantes, 
+       sin tener que verse en la obligación de volver al inicio.
+
+    3. Aunque la modificación de perfil está implementada, debe estar disponible desde una 
+       opción accesible para revisión, incluso si aún no se cuenta con autenticación implementada en backend.
+
+    4. En el formulario de inicio de sesión, es necesario validar la integridad de la contraseña 
+       de forma similar a como se hace en el registro, y eliminar mensaje “usuario o contraseña incorrectos”, 
+       en alert, que se presenta una vez validado el formulario y el mensaje de usuario autenticado, 
+       Esto sucede por que está ejecutando código en javascript que, otra vez, valida a formulario_ingreso, 
+       lo que se puede encontrar en /* Creando usuarios de prueba */.
+
+    5. En cuanto al formulario de modificación de perfil, la validación entre contraseña y confirmación
+       no está funcionando correctamente, posiblemente por un error en el contexto del campo evaluado 
+       (dice contrasennaImput, pudiendo ser modifContrasenna), y además la URL de de inicio en el menú dirige a index2.html.
+
+    6. Finalmente, es fundamental que implementen las páginas internas requeridas por su temática, 
+       como mantenedores de productos, clientes, gestión de inventario e historial de compras, entre otras, 
+       a que son parte esencial del alcance definido.
+
+
+Les sugiero enfocarse en la organización del proyecto, la coherencia en las rutas y la profundización en las validaciones de 
+todos los formularios. Les será muy útil revisar sus scripts de JavaScript para asegurar que las variables y elementos del DOM 
+estén correctamente referenciados. También pueden analizar cómo estructurar mejor su arquitectura de carpetas para reflejar una 
+separación clara de responsabilidades, funcionalidades y contenidos. Continúen trabajando en equipo con la misma dedicación, 
+ya que van por buen camino.
