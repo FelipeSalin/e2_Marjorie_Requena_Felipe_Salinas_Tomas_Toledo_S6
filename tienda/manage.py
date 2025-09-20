@@ -3,17 +3,11 @@
 import os
 import sys
 import oracledb
-from dotenv import load_dotenv
-load_dotenv()
 
-lib_dir = os.environ.get("ORACLE_LIB_DIR")
-tns_dir = os.environ.get("TNS_ADMIN_DIR")
+#se debe comentar para usar puerto 1521 /los que usamos docker 
+#oracledb.init_oracle_client(lib_dir=r'C:\Users\rlla2\OneDrive\Escritorio\Analista Programador Computacional\DUOC\Bimestre 5\Programacion Web\InstantClient\instantclient_23_9')
 
-if lib_dir and tns_dir:
-    oracledb.init_oracle_client(lib_dir=lib_dir)
-    os.environ["TNS_ADMIN"] = tns_dir
-
-
+#os.environ['TNS_ADMIN'] = r'C:\Users\rlla2\OneDrive\Escritorio\Analista Programador Computacional\DUOC\Bimestre 5\Programacion Web\Wallet'
 
 def main():
     """Run administrative tasks."""
