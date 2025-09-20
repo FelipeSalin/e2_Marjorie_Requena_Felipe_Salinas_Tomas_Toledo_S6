@@ -38,10 +38,10 @@ def formulario_modificacionperfil(request):
     return render(request, "formularios/formulario_modificacionperfil.html")
 
 def formulario_pwolvidada(request):
-    return render(request, "formularios/pwolvidada.html")
+    return render(request, "formularios/formulario_pwolvidada.html")
 
 def formulario_recuperarpw(request):
-    return render(request, "formularios/recuperarpw.html")
+    return render(request, "formularios/formulario_recuperarpw.html")
 
 def formulario_registro(request):
     return render(request, "formularios/formulario_registro.html")

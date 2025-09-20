@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="/index.html"
                 style="color: rgb(153, 132, 104); font-weight: bold;">
-                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+                <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
@@ -31,10 +31,12 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <div class="d-flex ms-auto align-items-center gap-2">
                     <!-- Botón de inicio de sesión -->
-                    <a href="/formulario_ingreso.html" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold text-warning" id="btnLogin">
+                        Iniciar sesión
+                    </a>
 
                     <!-- Botón de registro -->
-                    <a href="/formulario_registro.html" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    <a href="{% url 'index' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Inicio</a>
 
                     <!-- Barra de búsqueda -->
                     <form class="d-flex ms-3" role="search">
