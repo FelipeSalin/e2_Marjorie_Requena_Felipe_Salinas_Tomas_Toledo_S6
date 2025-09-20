@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - MFT Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="{% static  'css/styles.css' %}">
 </head>
 
 <body>
@@ -14,7 +16,7 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="/index.html" style="color: rgb(153, 132, 104); font-weight: bold;">
-                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+                <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
