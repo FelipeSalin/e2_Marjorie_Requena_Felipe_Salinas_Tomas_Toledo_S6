@@ -73,12 +73,19 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
+
+# --- DATABASE QUE SE OCUPARÁ POR DOCKER ---
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# --- DATABASE QUE SE OCUPARÁ POR WALLET ---
 
 """
 DATABASES = {
