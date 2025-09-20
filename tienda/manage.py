@@ -4,9 +4,10 @@ import os
 import sys
 import oracledb
 
-oracledb.init_oracle_client(lib_dir=r'C:\Users\rlla2\OneDrive\Escritorio\Analista Programador Computacional\DUOC\Bimestre 5\Programacion Web\InstantClient\instantclient_23_9')
+#se debe comentar para usar puerto 1521 /los que usamos dockert 
+#oracledb.init_oracle_client(lib_dir=r'C:\Users\rlla2\OneDrive\Escritorio\Analista Programador Computacional\DUOC\Bimestre 5\Programacion Web\InstantClient\instantclient_23_9')
 
-os.environ['TNS_ADMIN'] = r'C:\Users\rlla2\OneDrive\Escritorio\Analista Programador Computacional\DUOC\Bimestre 5\Programacion Web\Wallet'
+#os.environ['TNS_ADMIN'] = r'C:\Users\rlla2\OneDrive\Escritorio\Analista Programador Computacional\DUOC\Bimestre 5\Programacion Web\Wallet'
 
 def main():
     """Run administrative tasks."""

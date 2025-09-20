@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'dtsi4r60exjexwzd_high',
-        'USER': 'DUOC_SEMANA6',
-        'PASSWORD': 'duocUCCL2025',
+        'NAME': 'localhost:1521/free',
+        'USER': 'C##SEMANA6',
+        'PASSWORD':'semana6',
         'TEST': {
-            'USER': 'default_test',
+            'USER':'default_test',
             'TBLSPACE': 'default_test_tbls',
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         }
