@@ -13,13 +13,34 @@
 
 <body>
     <!-- NAVBAR -->
-    <a class="navbar navbar-expand-lg" style="background-color: #222;">
-        <a class="navbar-brand d-flex align-items-center" href="/carcasas.html"
-            style="color: rgb(153, 132, 104); font-weight: bold;">
-            <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
-            Galería de Carcasas
-        </a>
-    </a>
+    <nav class="navbar navbar-expand-lg" style="background-color: #222;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}" style="color: rgb(153, 132, 104); font-weight: bold;">
+                <img src="{% static '/assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
+                MFT Store
+            </a>
+
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <div class="d-flex ms-auto align-items-center gap-2">
+                    <!-- Botón de inicio de sesión -->
+                    <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar sesión</a>
+
+                    <!-- Botón de registro -->
+                    <a href="{% url 'formulario_registro' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
+
+                    <!-- Barra de búsqueda -->
+                    <form class="d-flex ms-3" role="search">
+                        <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
+                        <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <div class="container mt-5">
         <h2 class="mb-4">Registro de Compra</h2>
@@ -62,7 +83,7 @@
             </div>
         
             <button type="submit" class="btn btn-primary">Registrar compra</button>
-                <a href="/pago.html" class="btn btn-primary">Realizar pago </a>
+                <a href="{% url 'pago' %}" class="btn btn-primary">Realizar pago </a>
         </form>
         
         <div class="mt-4" id="resumenCompra"></div>

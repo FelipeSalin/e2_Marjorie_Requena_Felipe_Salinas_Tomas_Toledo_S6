@@ -16,8 +16,8 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="/index.html" style="color: rgb(153, 132, 104); font-weight: bold;">
-                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}" style="color: rgb(153, 132, 104); font-weight: bold;">
+                <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <div class="d-flex ms-auto align-items-center gap-2">
                     <!-- Botón de inicio de sesión -->
-                    <a href="/formulario_ingreso.html" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar sesión</a>
 
                     <!-- Botón de registro -->
-                    <a href="/formulario_registro.html" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    <a href="{% url 'formulario_registro' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
 
                     <!-- Barra de búsqueda -->
                     <form class="d-flex ms-3" role="search">
@@ -53,7 +53,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/carga-y-cableado/CargadorSamsung.png" class="img-fluid rounded-start" alt="Cargador Samsung Adaptive Fast Charger">
+                            <img src="{% static 'assets/images/carga-y-cableado/CargadorSamsung.png' %}" class="img-fluid rounded-start" alt="Cargador Samsung Adaptive Fast Charger">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -65,7 +65,7 @@
                                 <p class="card-text fw-bold">Precio: $12.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/carga-y-cableado/CableAnker.png" class="img-fluid rounded-start" alt="Cable Anker Powerline II">
+                            <img src="{% static 'assets/images/carga-y-cableado/CableAnker.png' %}" class="img-fluid rounded-start" alt="Cable Anker Powerline II">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -92,7 +92,7 @@
                                 <p class="card-text fw-bold">Precio: $9.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/carga-y-cableado/CargadorBaseus.png" class="img-fluid rounded-start" alt="Cargador de auto Baseus 65W">
+                            <img src="{% static 'assets/images/carga-y-cableado/CargadorBaseus.png' %}" class="img-fluid rounded-start" alt="Cargador de auto Baseus 65W">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -119,7 +119,7 @@
                                 <p class="card-text fw-bold">Precio: $15.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/carga-y-cableado/AdaptadorApple.png" class="img-fluid rounded-start" alt="Adaptador Apple USB-C">
+                            <img src="{% static 'assets/images/carga-y-cableado/AdaptadorApple.png' %}" class="img-fluid rounded-start" alt="Adaptador Apple USB-C">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -146,7 +146,7 @@
                                 <p class="card-text fw-bold">Precio: $10.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
