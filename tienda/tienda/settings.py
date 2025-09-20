@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 
 # --- DATABASE QUE SE OCUPARÁ POR DOCKER ---
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
