@@ -92,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'dtsi4r60exjexwzd_high',
-        'USER': 'PW_CLASE5',
+        'USER': 'DUOC_SEMANA6',
         'PASSWORD': 'duocUCCL2025',
         'TEST': {
             'USER': 'default_test',
