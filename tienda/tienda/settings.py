@@ -74,20 +74,8 @@ WSGI_APPLICATION = 'tienda.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-
 # --- DATABASE QUE SE OCUPARÁ POR DOCKER ---
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-# --- DATABASE QUE SE OCUPARÁ POR WALLET ---
-
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
@@ -99,6 +87,40 @@ DATABASES = {
             'TBLSPACE': 'default_test_tbls',
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         }
+    }
+}
+
+
+
+# --- DATABASE QUE SE OCUPARÁ POR WALLET ---
+
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'dtsi4r60exjexwzd_high',
+        'USER': 'PW_CLASE5',
+        'USER': 'DUOC_SEMANA6',
+        'PASSWORD': 'duocUCCL2025',
+        'TEST': {
+            'USER': 'default_test',
+            'TBLSPACE': 'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+        }
+    }
+}
+"""
+
+
+
+
+
+
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 """
