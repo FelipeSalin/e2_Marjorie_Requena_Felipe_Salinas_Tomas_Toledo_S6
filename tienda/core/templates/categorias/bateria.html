@@ -16,8 +16,8 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="/index.html" style="color: rgb(153, 132, 104); font-weight: bold;">
-                <img src="/assets/LogoEmpresa.webp" alt="Logo" width="50" class="me-2 rounded">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}" style="color: rgb(153, 132, 104); font-weight: bold;">
+                <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <div class="d-flex ms-auto align-items-center gap-2">
                     <!-- Botón de inicio de sesión -->
-                    <a href="/formulario_ingreso.html" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Iniciar sesión</a>
 
                     <!-- Botón de registro -->
-                    <a href="/formulario_registro.html" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    <a href="{% url 'formulario_registro' %}" class="btn fw-bold" style="color: rgb(235,185,93);">Regístrate acá</a>
 
                     <!-- Barra de búsqueda -->
                     <form class="d-flex ms-3" role="search">
@@ -53,7 +53,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/baterias-y-energia/RedmiPowerbank.png" class="img-fluid rounded-start" alt="Power Bank Xiaomi">
+                            <img src="{% static 'assets/images/baterias-y-energia/RedmiPowerbank.png' %}" class="img-fluid rounded-start" alt="Power Bank Xiaomi">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -65,7 +65,7 @@
                                 <p class="card-text fw-bold">Precio: $25.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/baterias-y-energia/CargadorMagsafe.png" class="img-fluid rounded-start" alt="Cargador Belkin MagSafe">
+                            <img src="{% static 'assets/images/baterias-y-energia/CargadorMagsafe.png' %}" class="img-fluid rounded-start" alt="Cargador Belkin MagSafe">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -92,7 +92,7 @@
                                 <p class="card-text fw-bold">Precio: $60.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                 <div class="card shadow-sm border">
                     <div class="row g-0 align-items-center">
                         <div class="col-md-4 text-center p-3">
-                            <img src="/assets/images/baterias-y-energia/CargadorSolarAnker.png" class="img-fluid rounded-start" alt="Anker Solar Power Bank">
+                            <img src="{% static 'assets/images/baterias-y-energia/CargadorSolarAnker.png' %}" class="img-fluid rounded-start" alt="Anker Solar Power Bank">
                         </div>
 
                         <div class="col-md-8 p-3">
@@ -119,7 +119,7 @@
                                 <p class="card-text fw-bold">Precio: $40.000</p>
                                 <p class="text-success">Stock disponible</p>
                                 <p class="text-primary">Despacho inmediato</p>
-                                <a href="/compra.html" class="btn btn-primary me-2">Comprar ahora</a>
+                                <a href="{% url 'compra' %}" class="btn btn-primary me-2">Comprar ahora</a>
                                 <a href="#" class="btn btn-success">Agregar al carrito</a>
                             </div>
                         </div>
