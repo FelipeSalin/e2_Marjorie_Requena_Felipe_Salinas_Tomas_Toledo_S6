@@ -1,7 +1,7 @@
 # e2_Marjorie_Requena_Felipe_Salinas_Tomas_Toledo_S6
 
 --Descripción:
-Proyecto de estudiantes DUOCUC, aprendiendo HTML, CSS y JavaScript.
+Proyecto de estudiantes DUOCUC, aprendiendo HTML, CSS y JavaScript. Todo aplicado con Django y autenticaciones correspondientes.
 Creando una página de venta de accesorios de celulares que se encuentran en distintas categorías. Se muestran detalles sobre los distintos productos como imágenes, precios, etc.
 
 
