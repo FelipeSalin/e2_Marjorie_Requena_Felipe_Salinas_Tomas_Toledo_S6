@@ -20,7 +20,7 @@ from django.urls import path
 from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path("", index_estatico, name="index"),
     path("contacto/", contacto, name="contacto"),
     path("audio/", audio, name="audio"),
