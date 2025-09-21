@@ -48,3 +48,4 @@ def formulario_registro(request):
 
 def iniciar_sesion(request):
     return render(request, "autentificacion/login.html")
+
