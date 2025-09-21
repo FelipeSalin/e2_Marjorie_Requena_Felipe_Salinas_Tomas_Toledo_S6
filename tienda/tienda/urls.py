@@ -20,7 +20,7 @@ from django.urls import path
 from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro, iniciar_sesion, cerrar_sesion
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("", index_estatico, name="index"),
     path("contacto/", contacto, name="contacto"),
     path("audio/", audio, name="audio"),
@@ -36,6 +36,6 @@ urlpatterns = [
     path("formulario_pwolvidada/", formulario_pwolvidada, name="formulario_pwolvidada"),
     path("formulario_recuperarpw/", formulario_recuperarpw, name="formulario_recuperarpw"),
     path("formulario_registro/", formulario_registro, name="formulario_registro"),
-    path("login/",iniciar_sesion,name="login"),
-    path("logout/",cerrar_sesion,name="logout"),
+    path("login/", iniciar_sesion, name="login"),
+    path("logout/", cerrar_sesion, name="logout"),
 ]
