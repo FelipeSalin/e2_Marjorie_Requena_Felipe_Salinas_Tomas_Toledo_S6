@@ -70,7 +70,11 @@
                                     autocomplete="on" placeholder="Ingrese su contraseña">
                                 <small class="text-danger" id="passLogin-error"></small>
                             </div>
-
+                            {% if error %}
+                            <div class="alert alert-danger" role="alert">
+                                {{%  error %}}
+                            </div>
+                            {% endif %}
                             <a href="/formulario_pwolvidada.html">¿Olvidaste tu contraseña?</a>
 
                             <div class="d-grid">

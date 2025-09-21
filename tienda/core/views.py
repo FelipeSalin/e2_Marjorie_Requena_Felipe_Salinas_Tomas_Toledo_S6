@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def index_estatico(request):
@@ -51,9 +52,32 @@ def formulario_registro(request):
 
 #Autentificacion
 def iniciar_sesion(request):
-    formulario = AuthenticationForm()
-    context ={
-        "formulario": formulario
-    }
-    return render(request, "autenticacion/login.html", context)
+    if request.method == "POST":
+        formulario = AuthenticationForm(request, data=request.POST)  
+        if formulario.is_valid():
+            nombre_usuario = formulario.cleaned_data.get("usuarioLogin")
+            contrasena = formulario.cleaned_data.get("passLogin")
+            usuario = authenticate(usuarioLogin=nombre_usuario, passLogin=contrasena)
+            if usuario is None:
+                context={
+                "formulario": formulario,
+                "error": "Usuario o contraseña incorrectos"
+                }
+                return render(request, "autenticacion/login.html", context) 
+            else:
+                login(request, usuario)
+                return redirect("index")
+        else:
+            context={
+                "formulario": formulario,
+                "error": "Usuario o contraseña incorrectos"
+            }
+            return render(request, "autenticacion/login.html", context)  
+        
+    else:    
+        formulario = AuthenticationForm()
+        context ={
+            "formulario": formulario
+        }
+        return render(request, "autenticacion/login.html", context)
 
