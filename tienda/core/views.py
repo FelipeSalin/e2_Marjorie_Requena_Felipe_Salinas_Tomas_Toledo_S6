@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def index_estatico(request):
@@ -80,4 +80,7 @@ def iniciar_sesion(request):
             "formulario": formulario
         }
         return render(request, "autenticacion/login.html", context)
-
+    
+def cerrar_sesion(request):
+    logout(request)
+    return redirect("index")
