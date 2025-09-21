@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro, iniciar_sesion, cerrar_sesion
+from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro, iniciar_sesion, cerrar_sesion, registro_usuario
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -38,4 +38,5 @@ urlpatterns = [
     path("formulario_registro/", formulario_registro, name="formulario_registro"),
     path("login/", iniciar_sesion, name="login"),
     path("logout/", cerrar_sesion, name="logout"),
+    path("registro/", registro_usuario, name="registro_usuario"),
 ]

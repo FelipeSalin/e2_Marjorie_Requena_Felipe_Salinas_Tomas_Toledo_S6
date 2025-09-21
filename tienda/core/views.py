@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from .forms import CustomUserCreationForm
 
 # Create your views here.
 def index_estatico(request):
@@ -80,7 +82,27 @@ def iniciar_sesion(request):
             "formulario": formulario
         }
         return render(request, "autenticacion/login.html", context)
-    
+
+def registro_usuario(request):
+    if request.method == "POST":
+        # formulario = UserCreationForm(request.POST)
+        formulario = CustomUserCreationForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('index')
+        else:
+            contexto = {
+                "formulario": formulario
+            }
+            return render(request, "autenticacion/registro.html", contexto)
+    else:
+        formulario = CustomUserCreationForm()
+        contexto = {
+            "formulario": formulario
+        }
+        return render(request, "autenticacion/registro.html", contexto)
+
+@login_required
 def cerrar_sesion(request):
     logout(request)
     return redirect("index")

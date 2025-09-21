@@ -40,7 +40,8 @@
                     <!-- Botón de registro -->
                     <a href="{% url 'formulario_registro' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
                     {% else %}
-                    <a href="{% url 'logout' %}" id="btnLogout" class="btn btn-danger btn-sm d-none">Cerrar sesión</a>
+                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Cerrar sesión</a>
+                    
                     {% endif %}
                     <!-- Barra de búsqueda -->  
                     <form class="d-flex ms-3" role="search">
