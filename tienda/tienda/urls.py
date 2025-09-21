@@ -36,4 +36,5 @@ urlpatterns = [
     path("formulario_pwolvidada/", formulario_pwolvidada, name="formulario_pwolvidada"),
     path("formulario_recuperarpw/", formulario_recuperarpw, name="formulario_recuperarpw"),
     path("formulario_registro/", formulario_registro, name="formulario_registro"),
+    path("login/",ejemplo,name="login"),
 ]
