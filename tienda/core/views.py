@@ -47,5 +47,5 @@ def formulario_registro(request):
     return render(request, "formularios/formulario_registro.html")
 
 def iniciar_sesion(request):
-    return render(request, "autentificacion/login.html")
+    return render(request, "autenticacion/login.html")
 

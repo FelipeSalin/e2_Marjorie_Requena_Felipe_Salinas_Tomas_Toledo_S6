@@ -55,6 +55,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form id="formulario_ingreso" action="" novalidate>
+                            {%  csrf_token %}
                             <div class="mb-3">
                                 <label for="usuarioLogin" class="form-label">Nombre de Usuario</label>
                                 <input type="text" class="form-control" name="usuarioLogin" id="usuarioLogin"
