@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm
+
 
 # Create your views here.
 def index_estatico(request):
@@ -46,6 +48,12 @@ def formulario_recuperarpw(request):
 def formulario_registro(request):
     return render(request, "formularios/formulario_registro.html")
 
+
+#Autentificacion
 def iniciar_sesion(request):
-    return render(request, "autenticacion/login.html")
+    formulario = AuthenticationForm()
+    context ={
+        "formulario": formulario
+    }
+    return render(request, "autenticacion/login.html", context)
 
