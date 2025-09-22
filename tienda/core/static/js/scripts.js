@@ -46,6 +46,11 @@ if (form) {
         if (usuarioInput.value.trim() === '') {
             mostrarError('usuario', 'Por favor, ingresa un nombre de usuario válido');
             valido = false;
+        } else {
+            const usuarioRegex = /^[A-Za-z0-9_]{4,30}$/;
+            if (!usuarioRegex.test(usuarioInput.value)) {
+                mostrarError('usuario', 'El usuario debe tener entre 4 y 30 carácteres y solo puede contener letras, números y guión bajo');
+            }
         }
 
         if (correoInput.value.trim() === '') {
@@ -101,11 +106,22 @@ if (loginForm) {
         if (usuarioLogin.value.trim() === '') {
             mostrarError('usuarioLogin', 'Por favor, ingresa tu nombre de usuario');
             valido = false;
+        } else {
+            const usuarioRegex = /^[A-Za-z0-9_]{4,30}$/;
+            if (!usuarioRegex.test(usuarioLogin.value)) {
+                mostrarError('usuarioLogin', 'El usuario debe tener entre 4 y 30 carácteres y solo puede contener letras, números y guión bajo');
+            }
         }
 
         if (contrasennaLogin.value.trim() === '') {
             mostrarError('passLogin', 'Por favor, ingresa tu contraseña');
             valido = false;
+        } else {
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,18}$/;
+            if (!passwordRegex.test(contrasennaLogin.value)) {
+                mostrarError('passLogin', 'La contraseña debe tener de 6 a 18 caracteres, incluir al menos una mayúscula, un número y no contener caracteres especiales');
+                valido = false;
+            }
         }
 
         if (valido) {
