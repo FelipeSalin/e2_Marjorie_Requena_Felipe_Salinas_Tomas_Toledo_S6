@@ -57,9 +57,9 @@ def iniciar_sesion(request):
     if request.method == "POST":
         formulario = AuthenticationForm(request, data=request.POST)  
         if formulario.is_valid():
-            nombre_usuario = formulario.cleaned_data.get("usuarioLogin")
-            contrasena = formulario.cleaned_data.get("passLogin")
-            usuario = authenticate(usuarioLogin=nombre_usuario, passLogin=contrasena)
+            nombre_usuario = formulario.cleaned_data.get("username")
+            contrasena = formulario.cleaned_data.get("password")
+            usuario = authenticate(username=nombre_usuario, password=contrasena)
             if usuario is None:
                 context={
                 "formulario": formulario,

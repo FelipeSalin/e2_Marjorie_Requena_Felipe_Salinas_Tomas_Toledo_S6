@@ -50,6 +50,7 @@ if (form) {
             const usuarioRegex = /^[A-Za-z0-9_]{4,30}$/;
             if (!usuarioRegex.test(usuarioInput.value)) {
                 mostrarError('usuario', 'El usuario debe tener entre 4 y 30 carácteres y solo puede contener letras, números y guión bajo');
+                valido = false;
             }
         }
 
@@ -81,7 +82,6 @@ if (form) {
         }
 
         if (valido) {
-            alert('¡Registrado Exitosamente!');
             form.submit();
         }
     });
@@ -110,6 +110,7 @@ if (loginForm) {
             const usuarioRegex = /^[A-Za-z0-9_]{4,30}$/;
             if (!usuarioRegex.test(usuarioLogin.value)) {
                 mostrarError('usuarioLogin', 'El usuario debe tener entre 4 y 30 carácteres y solo puede contener letras, números y guión bajo');
+                valido = false;
             }
         }
 
@@ -125,7 +126,7 @@ if (loginForm) {
         }
 
         if (valido) {
-            alert('Inicio de sesión exitoso');
+            loginForm.submit();
         }
     })
 }
@@ -245,13 +246,13 @@ if (formCambio) {
             valido = false;
         } else {
             const modifPasswordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,18}$/;
-            if (!modifPasswordRegex.test(contrasennaInput.value)) {
+            if (!modifPasswordRegex.test(modifContrasenna.value)) {
                 mostrarError('modifPass', 'La contraseña debe tener de 6 a 18 caracteres, incluir al menos una mayúscula, un número y no contener caracteres especiales');
                 valido = false;
             }
         }
 
-        if (modifContrasenna2.value !== contrasennaInput.value) {
+        if (modifContrasenna2.value !== modifContrasenna.value) {
             mostrarError('modifPass2', 'La constraseña debe ser igual a la anterior');
             valido = false;
         }
