@@ -18,7 +18,7 @@ class Producto(models.Model):
     
     class Inventario(models.Model):
         nombre = models.CharField(max_length=100)
-        identificacion = models.CharField(max_length=50, unique=True)  
+        identificacion = models.CharField(max_length=50, unique=True)  # mejor CharField
         cantidad = models.PositiveIntegerField()  
         categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
 
