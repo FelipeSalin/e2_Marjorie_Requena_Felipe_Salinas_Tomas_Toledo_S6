@@ -207,6 +207,7 @@ if (passForm) {
 const formCambio = document.getElementById('formulario_modificacion');
 
 const modifNombre = document.getElementById('modifNombre');
+const modifApellido = document.getElementById('modifApellido')
 const modifUsuario = document.getElementById('modifUsuario');
 const modifCorreo = document.getElementById('modifMail');
 const modifContrasenna = document.getElementById('modifPass');
@@ -215,7 +216,7 @@ const modifContrasenna2 = document.getElementById('modifPass2');
 if (formCambio) {
     formCambio.addEventListener('submit', function (event) {
         event.preventDefault();
-        const modifCampos = ['modifNombre', 'modifUsuario', 'modifMail', 'modifPass', 'modifPass2'];
+        const modifCampos = ['modifNombre', 'modifApellido', 'modifUsuario', 'modifMail', 'modifPass', 'modifPass2'];
         limpiarErrores(modifCampos);
 
         let valido = true;
@@ -225,9 +226,20 @@ if (formCambio) {
             valido = false;
         }
 
+        if (modifApellido.value.trim() === '') {
+            mostrarError('modifApellido', 'Por favor, ingresa un apellido válido');
+            valido = false;
+        }
+
         if (modifUsuario.value.trim() === '') {
             mostrarError('modifUsuario', 'Por favor, ingresa un nombre de usuario válido');
             valido = false;
+        } else {
+            const usuarioRegex = /^[A-Za-z0-9_]{4,30}$/;
+            if (!usuarioRegex.test(modifUsuario.value)) {
+                mostrarError('modifUsuario', 'El usuario debe tener entre 4 y 30 carácteres y solo puede contener letras, números y guión bajo');
+                valido = false;
+            }
         }
 
         if (modifCorreo.value.trim() === '') {
@@ -258,8 +270,7 @@ if (formCambio) {
         }
 
         if (valido) {
-            alert('¡Cambios realizados Exitosamente!');
-            form.submit();
+            formCambio.submit();
         }
     });
 }

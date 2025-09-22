@@ -17,19 +17,18 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}"
-                style="color: rgb(153, 132, 104); font-weight: bold;">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}" style="color: rgb(153, 132, 104); font-weight: bold;">
                 <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
-                </a>
+            </a>
 
-
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
-                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMenu">
+
+                <div class="d-flex ms-auto align-items-center gap-2">
 
                 <!-- Categorías en el menú 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 8px;">
@@ -41,20 +40,32 @@
                     <li class="nav-item"><a class="nav-link text-light" href="/assets/images/Cargador2.jpg">Accesorios Extra</a></li>
                 </ul> -->
 
-                <!-- Botón de inicio de sesión -->
-                <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold text-warning" id="btnLogin">
-                    Iniciar sesión
-                </a>
+                    {% if not user.is_authenticated%}
+                    <!-- Botón de inicio de sesión -->
+                    <a href="{% url 'login' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Iniciar sesión</a>
+
+                    <!-- Una vez iniciada la sesión, se ocultarían los botones de "inicio sesión"
+                        y de "registrate acá". En su lugar aparecerían los de "Modificar perfil" y " cerrar sesión" 
+                        Modificar perfil redireccionaría a /formulario_modificacionperfil.html-->
 
 
-                <!-- Botón de registro -->
-                <a href="{% url 'index' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235, 185, 93);">Inicio</a>
+                    <!-- Botón de registro -->
+                    <a href="{% url 'registro_usuario' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    {% else %}
 
-                <!-- Barra de búsqueda -->
-                <form class="d-flex ms-3" role="search">
-                    <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
-                    <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
-                </form>
+                    <!-- Botón para modificar perfil -->
+                    <a href="{% url 'index' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Inicio</a>
+
+                    <!-- Botón de cierre de sesión -->
+                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Cerrar sesión</a>
+                    
+                    {% endif %}
+                    <!-- Barra de búsqueda -->  
+                    <form class="d-flex ms-3" role="search">
+                        <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
+                        <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
@@ -66,12 +77,20 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
-                            <form id="formulario_modificacion" action="" novalidate>
+                            <form id="formulario_modificacion" novalidate method="post" action="">
+                                {% csrf_token %}
                                 <div class="mb-3">
-                                    <label for="modifNombre" class="form-label">Nombre Completo <span style="color: red;">*</span></label>
+                                    <label for="modifNombre" class="form-label">Nombre <span style="color: red;">*</span></label>
                                     <input type="text" class="form-control" name="modifNombre" id="modifNombre" required autocomplete="on"
-                                        placeholder="Ingrese su nombre completo">
+                                        placeholder="Ingrese un nombre">
                                     <small class="text-danger" id="modifNombre-error"></small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modifApellido" class="form-label">Apellido <span style="color: red;">*</span></label>
+                                    <input type="text" class="form-control" name="modifApellido" id="modifApellido" required autocomplete="on"
+                                        placeholder="Ingrese un apellido">
+                                    <small class="text-danger" id="modifApellido-error"></small>
                                 </div>
 
                                 <div class="mb-3">
@@ -84,28 +103,22 @@
                                 <div class="mb-3">
                                     <label for="modifMail" class="form-label">Correo Electrónico <span style="color: red;">*</span></label>
                                     <input type="email" class="form-control" name="modifMail" id="modifMail" required autocomplete="on"
-                                        placeholder="Ingrese su correo electrónico">
+                                        placeholder="Ingrese nuevo correo electrónico">
                                     <small class="text-danger" id="modifMail-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="modifPass" class="form-label">Contraseña <span style="color: red;">*</span></label>
                                     <input type="password" class="form-control" name="modifPass" id="modifPass" required autocomplete="on"
-                                        placeholder="Ingrese su contraseña">
+                                        placeholder="Ingrese nueva contraseña">
                                     <small class="text-danger" id="modifPass-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="modifPass2" class="form-label">Repita Contraseña <span style="color: red;">*</span></label>
                                     <input type="password" class="form-control" name="modifPass2" id="modifPass2" required autocomplete="off"
-                                        placeholder="Repita su contraseña">
+                                        placeholder="Repita nueva contraseña">
                                     <small class="text-danger" id="modifPass2-error"></small>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="modifDomicilio" class="form-label">Domicilio</label>
-                                    <input type="text" class="form-control" name="modifDomicilio" id="modifDomicilio" required autocomplete="on"
-                                        placeholder="Indicar dirección de despacho">
                                 </div>
 
                                 <span style="color: red;">*</span> = Campo Obligatorio 
