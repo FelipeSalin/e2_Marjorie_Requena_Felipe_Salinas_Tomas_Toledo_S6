@@ -57,42 +57,42 @@
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre <span style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" required autocomplete="on"
+                                    <input type="text" class="form-control" name="first_name" id="nombre" required autocomplete="on"
                                         placeholder="Ingrese su nombre">
                                     <small class="text-danger" id="nombre-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="apellido" class="form-label">Apellido <span style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" name="apellido" id="apellido" required autocomplete="on"
+                                    <input type="text" class="form-control" name="last_name" id="apellido" required autocomplete="on"
                                         placeholder="Ingrese su apellido">
                                     <small class="text-danger" id="apellido-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="usuario" class="form-label">Nombre de Usuario <span style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" name="usuario" id="usuario"
+                                    <input type="text" class="form-control" name="username" id="usuario"
                                         placeholder="Ingrese un nombre de usuario">
                                     <small class="text-danger" id="usuario-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="mail" class="form-label">Correo Electrónico <span style="color: red;">*</span></label>
-                                    <input type="email" class="form-control" name="mail" id="mail" required autocomplete="on"
+                                    <input type="email" class="form-control" name="email" id="mail" required autocomplete="on"
                                         placeholder="Ingrese su correo electrónico">
                                     <small class="text-danger" id="mail-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="pass" class="form-label">Contraseña <span style="color: red;">*</span></label>
-                                    <input type="password" class="form-control" name="pass" id="pass" required autocomplete="on"
+                                    <input type="password" class="form-control" name="password1" id="pass" required autocomplete="on"
                                         placeholder="Ingrese su contraseña">
                                     <small class="text-danger" id="pass-error"></small>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="pass2" class="form-label">Repita Contraseña <span style="color: red;">*</span></label>
-                                    <input type="password" class="form-control" name="pass2" id="pass2" required autocomplete="off"
+                                    <input type="password" class="form-control" name="password2" id="pass2" required autocomplete="off"
                                         placeholder="Repita su contraseña">
                                     <small class="text-danger" id="pass2-error"></small>
                                 </div>
