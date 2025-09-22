@@ -54,19 +54,18 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <form id="formulario_ingreso" action="" novalidate>
-                        <form id="loginFrom" novalidate method="post" action="">
+                        <form id="formulario_ingreso" novalidate method="post" action="">
                             {%  csrf_token %}
                             <div class="mb-3">
                                 <label for="usuarioLogin" class="form-label">Nombre de Usuario</label>
-                                <input type="text" class="form-control" name="usuarioLogin" id="usuarioLogin"
+                                <input type="text" class="form-control" name="username" id="usuarioLogin"
                                     placeholder="Ingrese un nombre de usuario">
                                 <small class="text-danger" id="usuarioLogin-error"></small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="passLogin" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" name="passLogin" id="passLogin" required
+                                <input type="password" class="form-control" name="password" id="passLogin" required
                                     autocomplete="on" placeholder="Ingrese su contraseña">
                                 <small class="text-danger" id="passLogin-error"></small>
                             </div>
@@ -75,7 +74,7 @@
                                 {{ error }}
                             </div>
                             {% endif %}
-                            <a href="/formulario_pwolvidada.html">¿Olvidaste tu contraseña?</a>
+                            <a href="{% url 'formulario_pwolvidada' %}">¿Olvidaste tu contraseña?</a>
 
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary"
