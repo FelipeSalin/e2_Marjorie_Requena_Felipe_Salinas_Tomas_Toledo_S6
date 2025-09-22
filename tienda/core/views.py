@@ -91,16 +91,16 @@ def registro_usuario(request):
             formulario.save()
             return redirect('index')
         else:
-            contexto = {
+            context = {
                 "formulario": formulario
             }
-            return render(request, "autenticacion/registro.html", contexto)
+            return render(request, "autenticacion/registro.html", context)
     else:
         formulario = CustomUserCreationForm()
-        contexto = {
+        context = {
             "formulario": formulario
         }
-        return render(request, "autenticacion/registro.html", contexto)
+        return render(request, "autenticacion/registro.html", context)
 
 @login_required
 def cerrar_sesion(request):
