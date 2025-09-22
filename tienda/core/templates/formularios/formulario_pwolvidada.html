@@ -17,28 +17,34 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}"
-                style="color: rgb(153, 132, 104); font-weight: bold;">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}" style="color: rgb(153, 132, 104); font-weight: bold;">
                 <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
-                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMenu">
+
                 <div class="d-flex ms-auto align-items-center gap-2">
-                    <!-- Botón de inicio de sesión -->
-                <a href="{% url 'formulario_ingreso' %}" class="btn fw-bold text-warning" id="btnLogin">
-                    Iniciar sesión
-                </a>
-
+                    {% if not user.is_authenticated%}
                     <!-- Botón de registro -->
-                    <a href="{% url 'index' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235, 185, 93);">Inicio</a>
+                    <a href="{% url 'index' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Inicio</a>
 
-                    <!-- Barra de búsqueda -->
+                    <!-- Una vez iniciada la sesión, se ocultarían los botones de "inicio sesión"
+                        y de "registrate acá". En su lugar aparecerían los de "Modificar perfil" y " cerrar sesión" 
+                        Modificar perfil redireccionaría a /formulario_modificacionperfil.html-->
+
+
+                    <!-- Botón de inicio de sesión -->
+                    <a href="{% url 'login' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    {% else %}
+                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Cerrar sesión</a>
+                    
+                    {% endif %}
+                    <!-- Barra de búsqueda -->  
                     <form class="d-flex ms-3" role="search">
                         <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
                         <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
@@ -50,12 +56,13 @@
 
 
         <div class="container mt-4 pt-4">
-            <h1 class="text-center">Escribe nueva contraseña</h1>
+            <h1 class="text-center">Escribe tu mail y te enviaremos un código</h1>
             <div class="row justify-content-center">
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
-                            <form id="formulario_email" action="" novalidate>
+                            <form id="formulario_email" novalidate method="post" action="">
+                                {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="verificacionEmail" class="form-label">Ingrese su correo electrónico<span style="color: red;">*</span></label>
                                     <input type="email" class="form-control" name="verificacionEmail" id="verificacionEmail" required autocomplete="on"
