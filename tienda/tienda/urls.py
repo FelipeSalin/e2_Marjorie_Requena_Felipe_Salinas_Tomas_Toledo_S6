@@ -45,7 +45,7 @@ urlpatterns = [
     path("login/", iniciar_sesion, name="login"),
     path("logout/", cerrar_sesion, name="logout"),
     path("registro/", registro_usuario, name="registro_usuario"),
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #Se agrega lo anterior para darle el directorio, y para eso hay que configurar settings.py
 
 #En el bloque de importaciones de settings.py, de agrega: import os
