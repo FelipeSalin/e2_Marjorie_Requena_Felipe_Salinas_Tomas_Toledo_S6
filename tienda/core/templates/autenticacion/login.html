@@ -17,12 +17,14 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}" style="color: rgb(153, 132, 104); font-weight: bold;">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}"
+                style="color: rgb(153, 132, 104); font-weight: bold;">
                 <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -31,7 +33,8 @@
                 <div class="d-flex ms-auto align-items-center gap-2">
                     {% if not user.is_authenticated%}
                     <!-- Botón de inicio de sesión -->
-                    <a href="{% url 'index' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Inicio</a>
+                    <a href="{% url 'index' %}" class="btn fw-bold" id="btnLogin"
+                        style="color: rgb(235,185,93);">Inicio</a>
 
                     <!-- Una vez iniciada la sesión, se ocultarían los botones de "inicio sesión"
                         y de "registrate acá". En su lugar aparecerían los de "Modificar perfil" y " cerrar sesión" 
@@ -39,12 +42,14 @@
 
 
                     <!-- Botón de registro -->
-                    <a href="{% url 'registro_usuario' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    <a href="{% url 'registro_usuario' %}" class="btn fw-bold" id="btnRegistrar"
+                        style="color: rgb(235,185,93);">Regístrate acá</a>
                     {% else %}
-                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Cerrar sesión</a>
-                    
+                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar"
+                        style="color: rgb(235,185,93);">Cerrar sesión</a>
+
                     {% endif %}
-                    <!-- Barra de búsqueda -->  
+                    <!-- Barra de búsqueda -->
                     <form class="d-flex ms-3" role="search">
                         <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
                         <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
@@ -62,7 +67,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form id="formulario_ingreso" novalidate method="post" action="">
-                            {%  csrf_token %}
+                            {% csrf_token %}
                             <div class="mb-3">
                                 <label for="usuarioLogin" class="form-label">Nombre de Usuario</label>
                                 <input type="text" class="form-control" name="username" id="usuarioLogin"

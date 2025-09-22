@@ -207,7 +207,7 @@ if (passForm) {
 const formCambio = document.getElementById('formulario_modificacion');
 
 const modifNombre = document.getElementById('modifNombre');
-const modifApellido = document.getElementById('modifApellido')
+const modifApe = document.getElementById('modifApe')
 const modifUsuario = document.getElementById('modifUsuario');
 const modifCorreo = document.getElementById('modifMail');
 const modifContrasenna = document.getElementById('modifPass');
@@ -216,7 +216,7 @@ const modifContrasenna2 = document.getElementById('modifPass2');
 if (formCambio) {
     formCambio.addEventListener('submit', function (event) {
         event.preventDefault();
-        const modifCampos = ['modifNombre', 'modifApellido', 'modifUsuario', 'modifMail', 'modifPass', 'modifPass2'];
+        const modifCampos = ['modifNombre', 'modifApe', 'modifUsuario', 'modifMail', 'modifPass', 'modifPass2'];
         limpiarErrores(modifCampos);
 
         let valido = true;
@@ -226,8 +226,8 @@ if (formCambio) {
             valido = false;
         }
 
-        if (modifApellido.value.trim() === '') {
-            mostrarError('modifApellido', 'Por favor, ingresa un apellido válido');
+        if (modifApe.value.trim() === '') {
+            mostrarError('modifApe', 'Por favor, ingresa un apellido válido');
             valido = false;
         }
 
