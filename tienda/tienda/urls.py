@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro, iniciar_sesion, cerrar_sesion, registro_usuario
 
 urlpatterns = [
