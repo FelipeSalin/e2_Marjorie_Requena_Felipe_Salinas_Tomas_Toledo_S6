@@ -19,22 +19,27 @@ function limpiarErrores(campos) {
 const form = document.getElementById('formulario_registro');
 
 const nombreInput = document.getElementById('nombre');
+const apellidoInput = document.getElementById('apellido');
 const usuarioInput = document.getElementById('usuario');
 const correoInput = document.getElementById('mail');
 const contrasennaInput = document.getElementById('pass');
 const contrasenna2Input = document.getElementById('pass2');
-const fechaInput = document.getElementById('fecha');
 
 if (form) {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-        const campos = ['nombre', 'usuario', 'mail', 'pass', 'pass2', 'fecha'];
+        const campos = ['nombre', 'apellido', 'usuario', 'mail', 'pass', 'pass2'];
         limpiarErrores(campos);
 
         let valido = true;
 
         if (nombreInput.value.trim() === '') {
             mostrarError('nombre', 'Por favor, ingresa un nombre válido');
+            valido = false;
+        }
+
+        if (apellidoInput.value.trim() === '') {
+            mostrarError('apellido', 'Por favor, ingresa un apellido válido');
             valido = false;
         }
 
@@ -68,24 +73,6 @@ if (form) {
         if (contrasenna2Input.value !== contrasennaInput.value) {
             mostrarError('pass2', 'La constraseña debe ser igual a la anterior');
             valido = false;
-        }
-
-        if (fechaInput.value === '') {
-            mostrarError('fecha', 'Por favor, ingresa una fecha válida');
-            valido = false;
-        } else {
-            const fechaNacimiento = new Date(fechaInput.value);
-            const fechaHoy = new Date();
-            let edad = fechaHoy.getFullYear() - fechaNacimiento.getFullYear();
-            const fechaMes = fechaHoy.getMonth() - fechaNacimiento.getMonth();
-            if (fechaMes < 0 || (fechaMes === 0 && fechaHoy.getDate() < fechaNacimiento.getDate())) {
-                edad--;
-            }
-
-            if (edad < 13) {
-                mostrarError('fecha', 'Debes tener al menos 13 años para poder registrarte');
-                valido = false;
-            }
         }
 
         if (valido) {
@@ -259,55 +246,3 @@ if (formCambio) {
         }
     });
 }
-
-
-/* Creando usuarios de prueba*/
-const users = [
-    {usuario: 'admin', contrasenna: 'admin1234', rol: 'admin'},
-    {usuario: 'cliente', contrasenna: 'cliente1234', rol: 'cliente'}
-];
-
-const formLogin = document.getElementById('formulario_ingreso');
-
-if (formLogin) {
-    formLogin.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const inputUsuario = document.getElementById('usuarioLogin').value.trim();
-        const inputContrasenna = document.getElementById('passLogin').value;
-
-        const usuarioEncontrado = users.find(u => u.usuario === inputUsuario && u.contrasenna === inputContrasenna);
-
-        if (usuarioEncontrado) {
-            localStorage.setItem('rolUsuario', usuarioEncontrado.rol);
-            localStorage.setItem('nombreUsuario', usuarioEncontrado.usuario);
-
-            window.location.href = '/index.html';
-        } else {
-            alert('Usuario o contraseña incorrectos');
-        }
-    });
-}
-
-
-/* Usuario logueado, se deja de mostrar botones "Inicio sesión", "Regístrate acá"
-   y aparece botón "Cerrar sesión"*/
-document.addEventListener('DOMContentLoaded', function() {
-    const btnLogin = document.getElementById('btnLogin');
-    const btnRegistrar = document.getElementById('btnRegistrar');
-    const rolUsuario = localStorage.getItem('rolUsuario');
-    const nombreUsuario = localStorage.getItem('nombreUsuario');
-    const btnLogout = document.getElementById('btnLogout');
-
-    if (rolUsuario && nombreUsuario) {
-        btnLogin.style.display = 'none';
-        btnRegistrar.style.display = 'none';
-        btnLogout.classList.remove('d-none');
-
-        btnLogout.addEventListener('click', function () {
-            localStorage.removeItem('rolUsuario');
-            localStorage.removeItem('nombreUsuario');
-            window.location.reload();
-        })
-    }
-})
