@@ -4,9 +4,9 @@ Mejoras que se deben implementar en base a los comentarios del profesor en la Ev
                      según su funcionalidad o contexto, ya que actualmente todas se encuentran en la raíz,
                      lo que dificulta el mantenimiento, la escalabilidad del código y el posicionamiento SEO del sitio. 
 
-    2. En segundo lugar, el menú de navegación podría permitir la navegación por categorías,
-       lo que enriquecería la experiencia del usuario y facilitaría el acceso a funcionalidades importantes, 
-       sin tener que verse en la obligación de volver al inicio.
+    LISTO!!!       2. En segundo lugar, el menú de navegación podría permitir la navegación por categorías,
+                     lo que enriquecería la experiencia del usuario y facilitaría el acceso a funcionalidades importantes, 
+                     sin tener que verse en la obligación de volver al inicio.
 
     LISTO!!!!     3. Aunque la modificación de perfil está implementada, debe estar disponible desde una 
                      opción accesible para revisión, incluso si aún no se cuenta con autenticación implementada en backend.
@@ -21,9 +21,9 @@ Mejoras que se deben implementar en base a los comentarios del profesor en la Ev
                      no está funcionando correctamente, posiblemente por un error en el contexto del campo evaluado 
                      (dice contrasennaImput, pudiendo ser modifContrasenna), y además la URL de de inicio en el menú dirige a index2.html.
 
-    6. Finalmente, es fundamental que implementen las páginas internas requeridas por su temática, 
-       como mantenedores de productos, clientes, gestión de inventario e historial de compras, entre otras, 
-       a que son parte esencial del alcance definido.
+    LISTO!!!     6.Finalmente, es fundamental que implementen las páginas internas requeridas por su temática, 
+                  como mantenedores de productos, clientes, gestión de inventario e historial de compras, entre otras, 
+                  a que son parte esencial del alcance definido.
 
 
 Les sugiero enfocarse en la organización del proyecto, la coherencia en las rutas y la profundización en las validaciones de 
