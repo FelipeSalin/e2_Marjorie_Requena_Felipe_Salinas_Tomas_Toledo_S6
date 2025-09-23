@@ -23,7 +23,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_ingreso, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, formulario_registro, iniciar_sesion, cerrar_sesion, registro_usuario
+from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, iniciar_sesion, cerrar_sesion, registro_usuario
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -37,11 +37,9 @@ urlpatterns = [
     path("compra/", compra, name="compra"),
     path("pago/", pago, name="pago"),
     path("registro_inventario/", inventario, name="inventario"),
-    path("formulario_ingreso/", formulario_ingreso, name="formulario_ingreso"),
     path("formulario_modificacionperfil/", formulario_modificacionperfil, name="formulario_modificacionperfil"),
     path("formulario_pwolvidada/", formulario_pwolvidada, name="formulario_pwolvidada"),
     path("formulario_recuperarpw/", formulario_recuperarpw, name="formulario_recuperarpw"),
-    path("formulario_registro/", formulario_registro, name="formulario_registro"),
     path("login/", iniciar_sesion, name="login"),
     path("logout/", cerrar_sesion, name="logout"),
     path("registro/", registro_usuario, name="registro_usuario"),

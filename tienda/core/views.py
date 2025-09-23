@@ -36,9 +36,6 @@ def pago(request):
 def inventario(request):
     return render(request, "compras/registro_inventario.html")
 
-def formulario_ingreso(request):
-    return render(request, "formularios/formulario_ingreso.html")
-
 def formulario_modificacionperfil(request):
     return render(request, "formularios/formulario_modificacionperfil.html")
 
@@ -47,9 +44,6 @@ def formulario_pwolvidada(request):
 
 def formulario_recuperarpw(request):
     return render(request, "formularios/formulario_recuperarpw.html")
-
-def formulario_registro(request):
-    return render(request, "formularios/formulario_registro.html")
 
 
 #Autentificacion
