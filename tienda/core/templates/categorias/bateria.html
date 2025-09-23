@@ -50,9 +50,18 @@
                     
                     {% endif %}
                     <!-- Barra de búsqueda -->  
-                    <form class="d-flex ms-3" role="search">
-                        <input class="form-control" type="search" placeholder="Buscar productos..." aria-label="Search">
-                        <button class="btn btn-outline-light ms-2" type="submit">Buscar</button>
+                    <div class="dropdown ms-2">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="menuProductos" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Categorías
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="menuProductos">
+                            <li><a class="dropdown-item" href="{% url 'cableado' %}">Cableado</a></li>
+                            <li><a class="dropdown-item" href="{% url 'audio' %}">Audio</a></li>
+                            <li><a class="dropdown-item" href="{% url 'carcasas' %}">Carcasa</a></li>
+                            <li><a class="dropdown-item" href="{% url 'soporte' %}">Soporte</a></li>
+                        </ul>
+                    </div>
                     </form>
                 </div>
             </div>
