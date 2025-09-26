@@ -1,3 +1,5 @@
+----- Evaluación Sumativa 1 -----
+
 Mejoras que se deben implementar en base a los comentarios del profesor en la Evaluación Sumativa 1
 
     LISTO!!!!     1. En primer lugar, el proyecto debe tener las páginas HTML organizadas en carpetas 
@@ -31,3 +33,62 @@ todos los formularios. Les será muy útil revisar sus scripts de JavaScript par
 estén correctamente referenciados. También pueden analizar cómo estructurar mejor su arquitectura de carpetas para reflejar una 
 separación clara de responsabilidades, funcionalidades y contenidos. Continúen trabajando en equipo con la misma dedicación, 
 ya que van por buen camino.
+
+
+
+
+
+
+----- Evaluación Sumativa 2 -----
+
+Mejoras que se deben implementar en base a los comentarios del profesor en la Evaluación Sumativa 2
+
+
+    Marjorie, Tomás y Felipe,
+    Espero que se encuentren bien. Quiero comenzar esta retroalimentación reconociendo el esfuerzo colectivo que han puesto en el 
+    desarrollo de su aplicación web durante esta actividad sumativa. Es evidente que han avanzado con compromiso y responsabilidad, 
+    lo cual se refleja en varios aspectos técnicos bien ejecutados. El trabajo colaborativo en equipo no siempre es sencillo, especialmente 
+    cuando se trata de coordinar tareas técnicas complejas como las que implica un proyecto integral de desarrollo web, pero ustedes 
+    han demostrado una colaboración efectiva en Git, con un repositorio público que muestra una secuencia clara de commits incrementales 
+    y una distribución equilibrada de tareas entre los integrantes. Este tipo de práctica no solo fortalece el proceso de desarrollo, 
+    sino que también prepara para entornos profesionales reales donde la trazabilidad del código y la transparencia del trabajo son fundamentales.
+
+
+    En cuanto al frontend intuitivo, deben sentirse orgullosos del resultado visual y estructural de su interfaz. La organización de 
+    templates, la navegación condicional basada en autenticación y la correcta implementación de archivos estáticos demuestran un 
+    entendimiento claro de cómo debe funcionar la capa de presentación en un framework como Django. Además, el uso de validaciones del 
+    lado del cliente mediante JavaScript mejora significativamente la experiencia de usuario, algo que muchas aplicaciones subestiman. 
+    También valoro positivamente que hayan definido sus modelos con relaciones claras de clave foránea entre Categoria, Producto e 
+    Inventario, y que hayan aplicado correctamente las migraciones. Esto indica que comprenden la importancia de una base sólida en la capa 
+    de datos, aunque aún queda por conectarla completamente con el resto del sistema.
+
+
+    Ahora bien, en este punto del proceso, el objetivo principal era lograr una integración completa entre la capa de presentación, 
+    la capa de negocios y la capa de datos, asegurando que cada acción del usuario se traduzca en operaciones reales sobre la base de datos. 
+    Aquí es donde aparecen algunas oportunidades importantes de mejora. Actualmente, muchos de sus templates (como los de categorías, 
+    compras o inventario) son estáticos, lo que significa que no están conectados a los modelos ni permiten realizar operaciones de 
+    creación, actualización o eliminación. Esto limita fuertemente la funcionalidad real de la aplicación. Les sugiero enfocarse en 
+    desarrollar vistas basadas en clases para gestionar productos e inventario, aprovechando el potencial de Django para crear CRUDs 
+    completos que interactúen directamente con la base de datos.
+
+
+    Otro aspecto clave es la diferenciación de roles de usuario. Si bien tienen una autenticación funcional utilizando el sistema de 
+    autenticación de Django, aún no se ha implementado una lógica que permita distinguir entre tipos de usuarios, como administradores 
+    y clientes. Para avanzar, consideren crear un modelo UserProfile con un campo de elección (choices) que asigne roles, y complementarlo 
+    con un middleware personalizado que controle el acceso a ciertas URLs según ese rol. Esto no solo cumple con uno de los requerimientos 
+    centrales, sino que también profundiza en la seguridad de la aplicación.
+
+
+    Finalmente y con respecto al registro de usuarios, han hecho un buen trabajo extendiendo UserCreationForm para incluir campos 
+    adicionales, lo cual muestra habilidad técnica. Sin embargo, la modificación de perfil y la recuperación de contraseña siguen 
+    siendo plantillas estáticas sin funcionalidad backend. Les recomiendo integrar Django’s PasswordResetView y crear una vista para 
+    edición de perfil que permita actualizar datos del usuario autenticado, conectando así estos procesos con la lógica del sistema.
+
+    
+    Como próximo paso, les propongo centrarse en hacer que su aplicación sea verdaderamente dinámica: que cada formulario envíe datos 
+    a la base, que cada lista se genere desde la base de datos y que cada acción de usuario tenga un efecto real en el sistema. 
+    Pueden comenzar por un módulo pequeño, como el CRUD de categorías, y luego escalar a productos e inventario. Usen las herramientas 
+    que Django ofrece, como generic views, forms personalizados y decorators como @login_required o @user_passes_test. Con estos ajustes, 
+    estarán mucho más cerca de entregar una solución completa, segura y funcional. Sigan así, tienen una base muy sólida para seguir creciendo.
+
+¡Muy buen trabajo!
