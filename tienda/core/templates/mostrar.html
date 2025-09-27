@@ -2,10 +2,11 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'assets/LogoEmpresa.webp' %}"/>
+    <link rel="shortcut icon" href="{% static 'assets/LogoEmpresa.webp' %}" />
     <title>Inicio - MFT Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static  'css/styles.css' %}">
@@ -16,12 +17,14 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #222;">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="" style="color: rgb(153, 132, 104); font-weight: bold;">
+            <a class="navbar-brand d-flex align-items-center" href=""
+                style="color: rgb(153, 132, 104); font-weight: bold;">
                 <img src="{% static 'assets/LogoEmpresa.webp' %}" alt="Logo" width="50" class="me-2 rounded">
                 MFT Store
             </a>
 
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -30,7 +33,8 @@
                 <div class="d-flex ms-auto align-items-center gap-2">
                     {% if not user.is_authenticated %}
                     <!-- Botón de inicio de sesión -->
-                    <a href="{% url 'login' %}" class="btn fw-bold" id="btnLogin" style="color: rgb(235,185,93);">Iniciar sesión</a>
+                    <a href="{% url 'login' %}" class="btn fw-bold" id="btnLogin"
+                        style="color: rgb(235,185,93);">Iniciar sesión</a>
 
                     <!-- Una vez iniciada la sesión, se ocultarían los botones de "inicio sesión"
                         y de "registrate acá". En su lugar aparecerían los de "Modificar perfil" y " cerrar sesión" 
@@ -38,29 +42,33 @@
 
 
                     <!-- Botón de registro -->
-                    <a href="{% url 'registro_usuario' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Regístrate acá</a>
+                    <a href="{% url 'registro_usuario' %}" class="btn fw-bold" id="btnRegistrar"
+                        style="color: rgb(235,185,93);">Regístrate acá</a>
                     {% else %}
 
                     <!-- Botón para modificar perfil -->
-                    <a href="{% url 'formulario_modificacionperfil' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Modificar perfil</a>
+                    <a href="{% url 'formulario_modificacionperfil' %}" class="btn fw-bold" id="btnRegistrar"
+                        style="color: rgb(235,185,93);">Modificar perfil</a>
 
                     <!-- Botón de cierre de sesión -->
-                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar" style="color: rgb(235,185,93);">Cerrar sesión</a>
-                    
+                    <a href="{% url 'logout' %}" class="btn fw-bold" id="btnRegistrar"
+                        style="color: rgb(235,185,93);">Cerrar sesión</a>
+
                     {% endif %}
-                    <!-- Barra de búsqueda -->  
-                <div class="dropdown ms-2">
-                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="menuProductos" data-bs-toggle="dropdown"
-                        aria-expanded="false" style="color: rgb(235,185,93); font-weight: bold;">
-                        Categorías
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="menuProductos">
-                        <li><a class="dropdown-item" href="{% url 'cableado' %}">Cableado</a></li>
-                        <li><a class="dropdown-item" href="{% url 'audio' %}">Audio</a></li>
-                        <li><a class="dropdown-item" href="{% url 'bateria' %}">Baterías</a></li>
-                        <li><a class="dropdown-item" href="{% url 'carcasas' %}">Carcasa</a></li>
-                        <li><a class="dropdown-item" href="{% url 'soporte' %}">Soporte</a></li>
-                    </ul>
+                    <!-- Barra de búsqueda -->
+                    <div class="dropdown ms-2">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="menuProductos"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: rgb(235,185,93); font-weight: bold;">
+                            Categorías
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="menuProductos">
+                            <li><a class="dropdown-item" href="{% url 'cableado' %}">Cableado</a></li>
+                            <li><a class="dropdown-item" href="{% url 'audio' %}">Audio</a></li>
+                            <li><a class="dropdown-item" href="{% url 'bateria' %}">Baterías</a></li>
+                            <li><a class="dropdown-item" href="{% url 'carcasas' %}">Carcasa</a></li>
+                            <li><a class="dropdown-item" href="{% url 'soporte' %}">Soporte</a></li>
+                        </ul>
                     </div>
                     </form>
                 </div>
@@ -80,18 +88,17 @@
             </p>
         </div>
 
-        <!-- Categorias -->
-        <div class="row g-4">
-            {% for categoria in categorias %}
-            <div class="col-md-6 col-lg-4">
-                <a href="{% url 'mostrar' id=categoria.id %}" class="categoria-card"> #id=categoria.id
-                    <img src="{% static categoria.imagen %}" alt="Cableado y Carga">
-                    <div class="overlay">
-                        <h3>{{ categoria.nombre }}</h3>
-                    </div>
-                </a>
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <a href="{% url 'cableado' %}" class="categoria-card">
+                        <img src="{% static categoria.imagen %}" alt="Cableado y Carga">
+                        <div class="overlay">
+                            <h3>{{ categoria.nombre }}</h3>
+                        </div>
+                    </a>
+                </div>
             </div>
-            {% endfor %}
         </div>
     </section>
 
@@ -105,4 +112,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

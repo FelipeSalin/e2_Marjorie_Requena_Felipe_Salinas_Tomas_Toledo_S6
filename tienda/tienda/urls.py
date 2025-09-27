@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 #Import para crear una carpeta /media en el administrador Django
 #from django.conf import settings
 #from django.conf.urls.static import static
@@ -23,11 +23,13 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, iniciar_sesion, cerrar_sesion, registro_usuario
+from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, iniciar_sesion, cerrar_sesion, registro_usuario, mostrar
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include('core.urls')),
     path("", index_estatico, name="index"),
+    path('categoria/<int:id>', mostrar, name="mostrar"),
     path("contacto/", contacto, name="contacto"),
     path("audio/", audio, name="audio"),
     path("bateria/", bateria, name="bateria"),

@@ -4,10 +4,58 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
+from .models import Categoria
 
 # Create your views here.
 def index_estatico(request):
-    return render(request, "index.html")
+
+    categorias = []
+
+    categoria = { 'nombre': 'Audio y Sonido', 'imagen': 'assets/images/audio-y-sonido/JBLFlip.webp'}
+    categoria2 = { 'nombre': 'Batería', 'imagen': 'assets/images/baterias-y-energia/CargadorSolarAnker.webp'}
+    categoria3 = { 'nombre': 'Cableado', 'imagen': 'assets/images/carga-y-cableado/CargadorSamsung.webp'}
+    categoria4 = { 'nombre': 'Carcasas', 'imagen': 'assets/images/carcasas/iphone/iphone16promax1.png'}
+    categoria5 = { 'nombre': 'Soporte', 'imagen': 'assets/images/soportes-y-monturas/SoporteLamicall.webp'}
+
+    categorias.append(categoria)
+    categorias.append(categoria2)
+    categorias.append(categoria3)
+    categorias.append(categoria4)
+    categorias.append(categoria5)
+
+    contexto = {
+        'saludo' : ' 👋 Bienvenido',
+        'categorias' : categorias
+    }
+    return render(request, "index.html", contexto)
+
+def mostrar(request, id):
+    categorias = [
+        { 'nombre': 'Audio y Sonido', 'imagen': 'assets/images/audio-y-sonido/JBLFlip.webp'},
+        { 'nombre': 'Batería', 'imagen': 'assets/images/baterias-y-energia/CargadorSolarAnker.webp'},
+        { 'nombre': 'Cableado', 'imagen': 'assets/images/carga-y-cableado/CargadorSamsung.webp'},
+        { 'nombre': 'Carcasas', 'imagen': 'assets/images/carcasas/iphone/iphone16promax1.png'},
+        { 'nombre': 'Soporte', 'imagen': 'assets/images/soportes-y-monturas/SoporteLamicall.webp'}
+    ]
+
+    if id >= 0 and id < len(categorias):
+        contexto = {
+            'categoria': categorias[id]
+        }
+
+        return render(request, 'mostrar.html', contexto)
+    else:
+        return redirect('index')
+    
+def editar_categoria(request, id):
+    categoria = get_object_or_404(Categoria, id=id)
+
+    context = {
+        'categoria': categoria
+    }
+
+    return render(request, 'categoria/editar.html', context)
+
 
 def contacto(request):
     return render(request, "contacto.html")
@@ -100,3 +148,14 @@ def registro_usuario(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect("index")
+
+
+
+#Views de los CRUD
+def listado_categorias(request):
+    categorias = Categoria.objects.all() # select * from libro;
+    
+    context = {
+        'categorias' : categorias
+    }
+    return render(request, 'categoria/index.html', context)

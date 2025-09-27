@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1>Listado de Categorías</h1>
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categoria in categorias %}
+                <tr>
+                    <td><img src="{{ categoria.imagen }}" alt="{{ categoria.nombre }}" width="100"></td>
+                    <td>{{ categoria.nombre }}</td>
+                    <td><a href="{% url 'editar_categoria' categoria.id %}">EDITAR</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
