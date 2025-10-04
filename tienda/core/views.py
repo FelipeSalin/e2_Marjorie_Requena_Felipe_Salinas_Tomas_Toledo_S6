@@ -8,7 +8,7 @@ from .models import Categoria, Producto, Inventario
 
 
 from rest_framework.decorators import api_view
-from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
+from ..rest_api.serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
 from rest_framework.response import Response
 
 # Create your views here.
@@ -69,7 +69,7 @@ def mostrar_inventario(request):
     }
     return render(request, 'core/mostrar_inventario.html', datos)
 
-   
+
 def editar_categoria(request, id):
     categoria = get_object_or_404(Categoria, id=id)
 

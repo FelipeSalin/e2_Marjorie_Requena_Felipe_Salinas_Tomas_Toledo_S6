@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Categoria, Producto, Inventario
+from core.models import Categoria, Producto, Inventario
 
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
