@@ -4,7 +4,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
-from .models import Categoria
+from .models import Categoria, Producto, Inventario
+
+from rest_framework.decorators import api_view
+from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
+from rest_framework.response import Response
 
 # Create your views here.
 def index_estatico(request):
@@ -28,6 +32,7 @@ def index_estatico(request):
         'categorias' : categorias
     }
     return render(request, "index.html", contexto)
+
 
 def mostrar(request, id):
     categorias = [
@@ -159,3 +164,57 @@ def listado_categorias(request):
         'categorias' : categorias
     }
     return render(request, 'categoria/index.html', context)
+
+
+
+
+#Views de los API REST
+@api_view(['GET'])
+def listar_categorias(request):
+    categorias = Categoria.objects.all()
+    serializadas = CategoriaSerializer(categorias, many=True)
+    respuesta = {
+        'success': True,
+        'messagge': 'Lista de categorías',
+        'data': serializadas.data,
+        'total': len(serializadas.data)
+    }
+    return Response(serializadas.data)
+
+@api_view(['GET'])
+def listar_productos(request):
+    productos = Producto.objects.all()
+    serializadas = ProductoSerializer(productos, many=True)
+    return Response(serializadas.data)
+
+@api_view(['GET'])
+def listar_productos_por_categoria(request, categoria_id):
+    try:
+        categoria = Categoria.objects.get(id=categoria_id)
+
+        productos = Producto.objects.filter(categoria_id=categoria_id)
+        serializadas = ProductoSerializer(productos, many=True)
+        return Response(serializadas.data)
+
+    except Categoria.DoesNotExist:
+        return Response({'error': 'Categoría no encontrada'}, status=404)
+
+"""
+#ejemplo ocupando request, que es (por lo que entiendo) con urls externas
+@api_view(['GET'])
+def noticias_juegos(request):
+    response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
+    noticias = []
+    if response.status_code == 200:
+        noticias = response.json()
+    return Response(noticias)
+
+#ejemplo ocupando request, que es (por lo que entiendo) con urls externas
+@api_view(['GET'])
+def noticias_juegos(request):
+    response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
+    noticias = []
+    if response.status_code == 200:
+        noticias = response.json()
+    return Response(noticias)
+"""

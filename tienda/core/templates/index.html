@@ -84,7 +84,7 @@
         <div class="row g-4">
             {% for categoria in categorias %}
             <div class="col-md-6 col-lg-4">
-                <a href="{% url 'mostrar' id=categoria.id %}" class="categoria-card"> #id=categoria.id
+                <a href="{% url 'mostrar' id=1 %}" class="categoria-card"> #id=categoria.id
                     <img src="{% static categoria.imagen %}" alt="Cableado y Carga">
                     <div class="overlay">
                         <h3>{{ categoria.nombre }}</h3>
