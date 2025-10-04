@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ categoria.nombre }} - MFT Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    {% comment %} (mantienes tu navbar igual) {% endcomment %}
+
+    <!-- SECCIÓN DE CATEGORÍA -->
+    <section class="container mt-4">
+        <div class="text-center mb-4">
+            <h1>{{ categoria.nombre }}</h1>
+            {% if categoria.imagen %}
+            <img src="{% static categoria.imagen %}" alt="{{ categoria.nombre }}" class="img-fluid" width="300">
+            {% endif %}
+            <p>Aquí encontrarás todos los productos de la categoría <strong>{{ categoria.nombre }}</strong>.</p>
+        </div>
+
+        <h2>Productos</h2>
+        <div class="row g-4">
+            {% for producto in productos %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    {% if producto.imagen %}
+                    <img src="{% static producto.imagen %}" class="card-img-top" alt="{{ producto.nombre }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">${{ producto.precio }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No hay productos disponibles en esta categoría.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-5 text-center">
+        <p>Todos los derechos reservados. MFT Store &copy; 2025</p>
+    </footer>
+</body>
+
+</html>

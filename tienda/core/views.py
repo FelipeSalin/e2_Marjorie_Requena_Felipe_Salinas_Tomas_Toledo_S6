@@ -6,32 +6,35 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from .models import Categoria, Producto, Inventario
 
+
 from rest_framework.decorators import api_view
 from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
 from rest_framework.response import Response
 
 # Create your views here.
+
 def index_estatico(request):
 
     categorias = []
 
-    categoria = { 'nombre': 'Audio y Sonido', 'imagen': 'assets/images/audio-y-sonido/JBLFlip.webp'}
-    categoria2 = { 'nombre': 'Batería', 'imagen': 'assets/images/baterias-y-energia/CargadorSolarAnker.webp'}
-    categoria3 = { 'nombre': 'Cableado', 'imagen': 'assets/images/carga-y-cableado/CargadorSamsung.webp'}
-    categoria4 = { 'nombre': 'Carcasas', 'imagen': 'assets/images/carcasas/iphone/iphone16promax1.png'}
-    categoria5 = { 'nombre': 'Soporte', 'imagen': 'assets/images/soportes-y-monturas/SoporteLamicall.webp'}
+    categoria1 = { 'id': 1, 'nombre': 'Audio y Sonido', 'imagen': 'assets/images/audio-y-sonido/JBLFlip.webp' }
+    categoria2 = { 'id': 2, 'nombre': 'Batería', 'imagen': 'assets/images/baterias-y-energia/CargadorSolarAnker.webp' }
+    categoria3 = { 'id': 3, 'nombre': 'Cableado', 'imagen': 'assets/images/carga-y-cableado/CargadorSamsung.webp' }
+    categoria4 = { 'id': 4, 'nombre': 'Carcasas', 'imagen': 'assets/images/carcasas/iphone/iphone16promax1.png' }
+    categoria5 = { 'id': 5, 'nombre': 'Soporte', 'imagen': 'assets/images/soportes-y-monturas/SoporteLamicall.webp' }
 
-    categorias.append(categoria)
+    categorias.append(categoria1)
     categorias.append(categoria2)
     categorias.append(categoria3)
     categorias.append(categoria4)
     categorias.append(categoria5)
 
     contexto = {
-        'saludo' : ' 👋 Bienvenido',
-        'categorias' : categorias
+        'saludo': '👋 Bienvenido',
+        'categorias': categorias
     }
     return render(request, "index.html", contexto)
+
 
 
 def mostrar(request, id):
@@ -51,7 +54,22 @@ def mostrar(request, id):
         return render(request, 'mostrar.html', contexto)
     else:
         return redirect('index')
-    
+def mostrar_productos(request):
+    productos = Producto.objects.all()
+    datos = {
+        'productos': productos
+    }
+    return render(request, 'core/mostrar_productos.html', datos)
+
+
+def mostrar_inventario(request):
+    inventario = Inventario.objects.all()
+    datos = {
+        'inventario': inventario
+    }
+    return render(request, 'core/mostrar_inventario.html', datos)
+
+   
 def editar_categoria(request, id):
     categoria = get_object_or_404(Categoria, id=id)
 
@@ -97,6 +115,8 @@ def formulario_pwolvidada(request):
 
 def formulario_recuperarpw(request):
     return render(request, "formularios/formulario_recuperarpw.html")
+
+
 
 
 #Autentificacion

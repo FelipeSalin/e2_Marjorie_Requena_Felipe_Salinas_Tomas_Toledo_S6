@@ -22,6 +22,7 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from core import views
 
 from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, iniciar_sesion, cerrar_sesion, registro_usuario, mostrar
 
@@ -30,6 +31,8 @@ urlpatterns = [
     path("", include('core.urls')),
     path("", index_estatico, name="index"),
     path('categoria/<int:id>', mostrar, name="mostrar"),
+    path("productos/", views.mostrar_productos, name="mostrar_productos"),
+    path("inventario/", views.mostrar_inventario, name="mostrar_inventario"),
     path("contacto/", contacto, name="contacto"),
     path("audio/", audio, name="audio"),
     path("bateria/", bateria, name="bateria"),
