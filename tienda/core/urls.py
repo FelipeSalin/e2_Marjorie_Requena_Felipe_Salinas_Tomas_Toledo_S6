@@ -9,5 +9,7 @@ urlpatterns = [
     path('api/categorias', views.listar_categorias, name='listar_categorias'),
     path('api/productos', views.listar_productos, name='listar_productos'),
     path('api/productos/categoria/<int:categoria_id>', views.listar_productos_por_categoria, name='listar_productos_por_categoria'),
+    path('api/auth/login', views.login, name='login'),
+    path('api/auth/perfil', views.perfil_usuario, name='perfil'),
     #path('api/inventario', listar_inventario, name='listar_inventario'),
 ]

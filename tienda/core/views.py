@@ -1,4 +1,6 @@
+import datetime
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
@@ -10,6 +12,10 @@ from .models import Categoria, Producto, Inventario
 from rest_framework.decorators import api_view
 from ..rest_api.serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
 from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 # Create your views here.
 
@@ -195,17 +201,25 @@ def listar_categorias(request):
     serializadas = CategoriaSerializer(categorias, many=True)
     respuesta = {
         'success': True,
-        'messagge': 'Lista de categorías',
+        'message': 'Lista de categorías',
         'data': serializadas.data,
-        'total': len(serializadas.data)
+        'total': len(serializadas.data),
+        'time': datetime.datetime.now(),
     }
-    return Response(serializadas.data)
+    return Response(respuesta)
 
 @api_view(['GET'])
 def listar_productos(request):
     productos = Producto.objects.all()
     serializadas = ProductoSerializer(productos, many=True)
-    return Response(serializadas.data)
+    respuesta = {
+        'success': True,
+        'message': 'Lista de productos',
+        'data': serializadas.data,
+        'total': len(serializadas.data),
+        'time': datetime.datetime.now(),
+    }
+    return Response(respuesta)
 
 @api_view(['GET'])
 def listar_productos_por_categoria(request, categoria_id):
@@ -214,13 +228,85 @@ def listar_productos_por_categoria(request, categoria_id):
 
         productos = Producto.objects.filter(categoria_id=categoria_id)
         serializadas = ProductoSerializer(productos, many=True)
-        return Response(serializadas.data)
+        respuesta = {
+            'success': True,
+            'message': f'Lista de productos en la categoría {categoria.nombre}',
+            'data': serializadas.data,
+            'total': len(serializadas.data),
+            'time': datetime.datetime.now(),
+        }
+        return Response(respuesta)
 
     except Categoria.DoesNotExist:
-        return Response({'error': 'Categoría no encontrada'}, status=404)
+        respuesta = {
+            'success': False,
+            'messagge': 'Categoría no encontrada',
+            'data': [],
+            'total': 0,
+            'time': datetime.datetime.now(),
+        }
+        return Response(respuesta, status=404)
+    
 
+# === Vistas de Autenticación ===
+
+@api_view(['POST'])
+def login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+
+    if username is None or password is None:
+        return Response({
+            'success': False,
+            'message': 'Username y password son requeridos',
+            'data': {},
+            'time': datetime.datetime.now(),
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    user = authenticate(username=username, password=password)
+
+    if user:
+        token, created = Token.objects.get_or_create(user=user)
+        respuesta = {
+            'success': True,
+            'messagge': 'Login exitoso',
+            'token': token.key,
+            'user': {
+                'id': user.id,
+                'username': user.username,
+                'email': user.email,
+            },
+            'time': datetime.datetime.now(),
+        }
+        return Response(respuesta)
+    else:
+        return Response({
+            'success': False,
+            'message': 'Credenciales inválidas',
+            'data': {},
+            'time': datetime.datetime.now(),
+        }, status=status.HTTP_401_UNAUTHORIZED)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def perfil_usuario(request):
+    user = request.user
+    respuesta = {
+        'success': True,
+        'message': 'Perfil del usuario autenticado',
+        'user': {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+        },
+        'time': datetime.datetime.now(),
+    }
+    return Response(respuesta)
+
+
+
+#APIS EXTERNAS
 """
-#ejemplo ocupando request, que es (por lo que entiendo) con urls externas
 @api_view(['GET'])
 def noticias_juegos(request):
     response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
@@ -229,7 +315,6 @@ def noticias_juegos(request):
         noticias = response.json()
     return Response(noticias)
 
-#ejemplo ocupando request, que es (por lo que entiendo) con urls externas
 @api_view(['GET'])
 def noticias_juegos(request):
     response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
