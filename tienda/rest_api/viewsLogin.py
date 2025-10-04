@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
@@ -9,6 +10,7 @@ from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
 
 from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['POST'])
@@ -46,3 +48,19 @@ def login(request):
         {"token": token.key},
         status=status.HTTP_200_OK
     )
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def perfil_usuario(request):
+    user = request.user
+    respuesta = {
+        'success': True,
+        'message': 'Perfil del usuario autenticado',
+        'user': {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+        },
+        'time': datetime.datetime.now(),
+    }
+    return Response(respuesta)

@@ -250,6 +250,7 @@ def listar_productos_por_categoria(request, categoria_id):
 
 # === Vistas de Autenticación ===
 
+"""
 @api_view(['POST'])
 def login(request):
     username = request.data.get('username')
@@ -286,7 +287,8 @@ def login(request):
             'data': {},
             'time': datetime.datetime.now(),
         }, status=status.HTTP_401_UNAUTHORIZED)
-    
+"""
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def perfil_usuario(request):
