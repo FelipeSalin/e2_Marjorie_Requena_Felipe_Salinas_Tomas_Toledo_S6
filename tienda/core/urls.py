@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = "core"
@@ -12,4 +12,5 @@ urlpatterns = [
     path('api/auth/login', views.login, name='login'),
     path('api/auth/perfil', views.perfil_usuario, name='perfil'),
     #path('api/inventario', listar_inventario, name='listar_inventario'),
+    path('api/', include('rest_api.urls'))
 ]
