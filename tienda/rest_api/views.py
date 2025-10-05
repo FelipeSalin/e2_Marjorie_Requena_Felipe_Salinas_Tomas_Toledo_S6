@@ -1,3 +1,147 @@
 from django.shortcuts import render
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
+
+from core.models import Categoria, Producto, Inventario
+from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
 
 # Create your views here.
+
+#Listas de los modelos (GET, POST)
+
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def lista_Categoria(request):
+    if request.method == 'GET':
+        categoria = Categoria.objects.all()
+        serializer = CategoriaSerializer(categoria, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = CategoriaSerializer(data = data) #revisar BD
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.data, status = status.HTTP_400_BAD_REQUEST)
+        
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def lista_Producto(request):
+    if request.method == 'GET':
+        producto = Producto.objects.all()
+        serializer = ProductoSerializer(producto, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = ProductoSerializer(data = data) #revisar BD
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.data, status = status.HTTP_400_BAD_REQUEST)
+        
+
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def lista_Inventario(request):
+    if request.method == 'GET':
+        inventario = Inventario.objects.all()
+        serializer = InventarioSerializer(inventario, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = InventarioSerializer(data = data) #revisar BD
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.data, status = status.HTTP_400_BAD_REQUEST)
+        
+
+#Detalles de los modelos (GET, PUT, DELETE)
+
+@csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+def detalle_Categoria(request, id):
+    try:
+        m = Categoria.objects.get(id = id) #ver BD
+    except Categoria.DoesNotExist:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = CategoriaSerializer(m)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = CategoriaSerializer(m, data = data) #ver BD
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        
+    elif request.method == 'DELETE':
+        m.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
+    
+
+@csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+def detalle_Producto(request, id):
+    try:
+        m = Producto.objects.get(id = id) #ver BD
+    except Producto.DoesNotExist:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = ProductoSerializer(m)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = ProductoSerializer(m, data = data) #ver BD
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        
+    elif request.method == 'DELETE':
+        m.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
+
+
+@csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
+def detalle_Inventario(request, id):
+    try:
+        m = Inventario.objects.get(id = id) #ver BD
+    except Inventario.DoesNotExist:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = InventarioSerializer(m)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = InventarioSerializer(m, data = data) #ver BD
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        
+    elif request.method == 'DELETE':
+        m.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
+
+
