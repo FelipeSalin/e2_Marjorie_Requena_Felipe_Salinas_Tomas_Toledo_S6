@@ -289,21 +289,6 @@ def login(request):
         }, status=status.HTTP_401_UNAUTHORIZED)
 """
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def perfil_usuario(request):
-    user = request.user
-    respuesta = {
-        'success': True,
-        'message': 'Perfil del usuario autenticado',
-        'user': {
-            'id': user.id,
-            'username': user.username,
-            'email': user.email,
-        },
-        'time': datetime.datetime.now(),
-    }
-    return Response(respuesta)
 
 
 
