@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from core.models import Categoria, Producto, Inventario
 from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
@@ -14,6 +16,7 @@ from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSeri
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def lista_Categoria(request):
     if request.method == 'GET':
         categoria = Categoria.objects.all()
@@ -31,6 +34,7 @@ def lista_Categoria(request):
         
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def lista_Producto(request):
     if request.method == 'GET':
         producto = Producto.objects.all()
@@ -49,6 +53,7 @@ def lista_Producto(request):
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def lista_Inventario(request):
     if request.method == 'GET':
         inventario = Inventario.objects.all()
@@ -69,6 +74,7 @@ def lista_Inventario(request):
 
 @csrf_exempt
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def detalle_Categoria(request, id):
     try:
         m = Categoria.objects.get(id = id) #ver BD
@@ -95,6 +101,7 @@ def detalle_Categoria(request, id):
 
 @csrf_exempt
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def detalle_Producto(request, id):
     try:
         m = Producto.objects.get(id = id) #ver BD
@@ -121,6 +128,7 @@ def detalle_Producto(request, id):
 
 @csrf_exempt
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def detalle_Inventario(request, id):
     try:
         m = Inventario.objects.get(id = id) #ver BD
