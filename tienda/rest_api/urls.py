@@ -12,5 +12,5 @@ urlpatterns = [
     path('auth/login/', login, name = "login"),
     path('auth/perfil/', perfil_usuario, name = "perfil"),
     path('dispositivos/', views.dispositivos, name="dispositivos"),
-    path('supporter/', views.supporter, name="supporter"),
+    path('generarqr/', views.generarqr, name="generarqr"),
 ]
