@@ -100,7 +100,7 @@ def login(request):
             'data': {},
             'time': datetime.datetime.now(),
         }, status=status.HTTP_401_UNAUTHORIZED)
-      
+    
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
