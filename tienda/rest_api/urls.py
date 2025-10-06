@@ -11,4 +11,6 @@ urlpatterns = [
     path('inventario/<int:id>/', views.detalle_Inventario, name = "detalle_Inventario"),
     path('auth/login/', login, name = "login"),
     path('auth/perfil/', perfil_usuario, name = "perfil"),
+    path('dispositivos/', views.dispositivos, name="dispositivos"),
+    path('supporter/', views.supporter, name="supporter"),
 ]
