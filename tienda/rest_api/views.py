@@ -1,4 +1,6 @@
-from django.shortcuts import render
+import requests
+
+from django.shortcuts import render, redirect
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -153,3 +155,20 @@ def detalle_Inventario(request, id):
         return Response(status = status.HTTP_204_NO_CONTENT)
 
 
+#APIS EXTERNAS
+
+@api_view(['GET'])
+def noticias_juegos(request):
+    response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
+    noticias = []
+    if response.status_code == 200:
+        noticias = response.json()
+    return Response(noticias)
+
+@api_view(['GET'])
+def noticias_juegos(request):
+    response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
+    noticias = []
+    if response.status_code == 200:
+        noticias = response.json()
+    return Response(noticias)
