@@ -14,3 +14,4 @@ urlpatterns = [
     #path('api/auth/perfil', viewsLogin.perfil_usuario, name='perfil'),
     #path('api/inventario', listar_inventario, name='listar_inventario'),
     path('api/', include('rest_api.urls'))
+]
