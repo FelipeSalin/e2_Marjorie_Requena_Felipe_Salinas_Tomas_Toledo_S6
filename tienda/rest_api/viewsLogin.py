@@ -14,9 +14,15 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
-
-
-
+"""
+for user in User.objects.all():
+    Token.objects.get_or_create(user=user)
+"""
+"""
+from rest_framework.permissions import IsAuthenticated
+class MiVistaProtegida(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+"""
 
 """
 @api_view(['POST'])
