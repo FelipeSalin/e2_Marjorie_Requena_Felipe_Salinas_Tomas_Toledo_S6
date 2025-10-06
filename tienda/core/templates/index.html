@@ -72,6 +72,73 @@
     <section class="categorias-container container mt-4">
         <div class="top-bar text-center mb-4">
             <img src="{% static 'assets/LogoEmpresa.png' %}" alt="Logo" class="img-fluid d-block mx-auto">
+            <h1>Bienvenido a MFT Store</h1>
+            <p>¿Necesitas algún accesorio para proteger tu teléfono?
+                ¿Quedas corto con la batería?
+                ¿Te hacen falta audífonos?
+                ¡Revisa lo que MFT Store tiene para ti!
+            </p>
+        </div>
+
+        <!-- Categorias -->
+        <div class="row g-4">
+            <!-- Cableado -->
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'cableado' %}" class="categoria-card">
+                    <img src="{% static 'assets/images/carga-y-cableado/CargadorSamsung.webp' %}" alt="Cableado y Carga">
+                    <div class="overlay">
+                        <h3>Cableado y Carga</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Audio -->
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'audio' %}" class="categoria-card">
+                    <img src=" {% static 'assets/images/audio-y-sonido/JBLFlip.webp'%}" alt="Audio y Sonido">
+                    <div class="overlay">
+                        <h3>Audio y Sonido</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Carcasas -->
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'carcasas' %}" class="categoria-card">
+                    <img src="{% static 'assets/images/carcasas/iphone/iphone16promax1.png' %}" alt="Carcasas">
+                    <div class="overlay">
+                        <h3>Carcasas</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Soportes -->
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'soporte' %}" class="categoria-card">
+                    <img src="{% static 'assets/images/soportes-y-monturas/SoporteLamicall.webp' %}" alt="Soportes">
+                    <div class="overlay">
+                        <h3>Soportes</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Energía -->
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'bateria' %}" class="categoria-card">
+                    <img src="{% static 'assets/images/baterias-y-energia/CargadorSolarAnker.webp' %}" alt="Baterías">
+                    <div class="overlay">
+                        <h3>Baterías</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% comment %}
+    <!-- SECCIÓN DE CATEGORÍAS -->
+    <section class="categorias-container container mt-4">
+        <div class="top-bar text-center mb-4">
+            <img src="{% static 'assets/LogoEmpresa.png' %}" alt="Logo" class="img-fluid d-block mx-auto">
             <h1>Bienvenido a MFT Store {{ saludo }}</h1>
             <p>¿Necesitas algún accesorio para proteger tu teléfono?
                 ¿Quedas corto con la batería?
@@ -94,6 +161,7 @@
             {% endfor %}
         </div>
     </section>
+{% endcomment %}
 
     <!-- FOOTER -->
     <footer class="mt-5">
