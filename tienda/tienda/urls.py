@@ -16,13 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-#Import para crear una carpeta /media en el administrador Django
-#from django.conf import settings
-#from django.conf.urls.static import static
 
 from django.conf import settings
 from django.conf.urls.static import static
 from core import views
+
 
 from core.views import index_estatico, contacto, audio, bateria, cableado, carcasas, soporte, compra, pago, inventario, formulario_modificacionperfil, formulario_pwolvidada, formulario_recuperarpw, iniciar_sesion, cerrar_sesion, registro_usuario, mostrar
 
@@ -48,6 +46,7 @@ urlpatterns = [
     path("login/", iniciar_sesion, name="login"),
     path("logout/", cerrar_sesion, name="logout"),
     path("registro/", registro_usuario, name="registro_usuario"),
+    path("api/", include('rest_api.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #Se agrega lo anterior para darle el directorio, y para eso hay que configurar settings.py
 

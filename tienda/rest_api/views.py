@@ -1,4 +1,6 @@
-from django.shortcuts import render
+import requests
+
+from django.shortcuts import render, redirect
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -153,3 +155,35 @@ def detalle_Inventario(request, id):
         return Response(status = status.HTTP_204_NO_CONTENT)
 
 
+#APIS EXTERNAS
+
+@api_view(['GET'])
+def dispositivos(request):
+    url = "https://mobile-phone-specs-database.p.rapidapi.com/gsm/get-specifications-by-phone-custom-id/103693"
+
+    headers = {
+	"x-rapidapi-key": "57207918e5msh0630f5103bb193dp15ee30jsn6be1cce08a90",
+	"x-rapidapi-host": "mobile-phone-specs-database.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers)
+
+    return Response(response.json())
+
+@api_view(['GET'])
+def generarqr(request):
+    url = "https://qr-generator26.p.rapidapi.com/api/generate"
+
+    payload = {
+        "text": "https://youtube.com",
+        "format": "base64"
+    }
+    headers = {
+        "x-rapidapi-key": "57207918e5msh0630f5103bb193dp15ee30jsn6be1cce08a90",
+        "x-rapidapi-host": "qr-generator26.p.rapidapi.com",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+
+    return Response(response.json())

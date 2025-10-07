@@ -9,6 +9,8 @@ urlpatterns = [
     path('categorias/<int:id>/', views.detalle_Categoria, name = "detalle_Categoria"),
     path('productos/<int:id>/', views.detalle_Producto, name = "detalle_Producto"),
     path('inventario/<int:id>/', views.detalle_Inventario, name = "detalle_Inventario"),
-    path('login/', login, name = "login"),
-    path('perfil/', perfil_usuario, name = "perfil")
+    path('auth/login/', login, name = "login"),
+    path('auth/perfil/', perfil_usuario, name = "perfil"),
+    path('dispositivos/', views.dispositivos, name="dispositivos"),
+    path('generarqr/', views.generarqr, name="generarqr"),
 ]

@@ -288,25 +288,3 @@ def login(request):
             'time': datetime.datetime.now(),
         }, status=status.HTTP_401_UNAUTHORIZED)
 """
-
-
-
-
-#APIS EXTERNAS
-"""
-@api_view(['GET'])
-def noticias_juegos(request):
-    response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
-    noticias = []
-    if response.status_code == 200:
-        noticias = response.json()
-    return Response(noticias)
-
-@api_view(['GET'])
-def noticias_juegos(request):
-    response = requests.get(url="https://www.mmobomb.com/api1/latestnews")
-    noticias = []
-    if response.status_code == 200:
-        noticias = response.json()
-    return Response(noticias)
-"""
