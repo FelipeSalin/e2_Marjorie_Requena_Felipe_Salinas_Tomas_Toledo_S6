@@ -92,3 +92,58 @@ Mejoras que se deben implementar en base a los comentarios del profesor en la Ev
     estarán mucho más cerca de entregar una solución completa, segura y funcional. Sigan así, tienen una base muy sólida para seguir creciendo.
 
 ¡Muy buen trabajo!
+
+
+
+
+
+
+
+
+
+----- Evaluación Sumativa 3 -----
+
+Mejoras que se deben implementar en base a los comentarios del profesor en la Evaluación Sumativa 3
+
+
+
+-- Lo bueno --
+
+    Hola Marjorie, Tomás y Felipe. Antes que nada, quiero reconocer el esfuerzo coordinado y técnico que han demostrado en esta entrega, 
+    ya que su trabajo refleja una comprensión sólida de los principios modernos del desarrollo web con Django, así como una madurez notable 
+    en la organización del código y en la colaboración en equipo. El objetivo de esta actividad era que pudieran desarrollar APIs REST 
+    propias, consumir servicios externos, proteger sus endpoints con autenticación basada en tokens, y mantener una arquitectura limpia y 
+    colaborativa, y en ese sentido han alcanzado un desempeño sobresaliente que los sitúa muy cerca del estándar profesional esperado en 
+    entornos reales de desarrollo.
+
+
+
+    En cuanto a su desempeño actual, han logrado implementar de manera íntegra y funcional dos APIs REST completas con operaciones CRUD 
+    orientadas a la gestión de una tienda, lo cual no solo cumple con lo solicitado, sino que además demuestra una buena abstracción de 
+    los requerimientos de negocio en recursos API bien estructurados. Asimismo, la integración de autenticación basada en tokens en ambas 
+    APIs propias refleja una comprensión clara de los mecanismos de seguridad necesarios para exponer servicios de forma segura, 
+    evitando accesos no autorizados y protegiendo la integridad de los datos. En el ámbito del consumo externo, han incorporado dos 
+    servicios web públicos de forma correcta, mostrando la información en su interfaz sin necesidad de recargar la página, lo cual 
+    evidencia un manejo adecuado de peticiones asíncronas y una buena integración frontend-backend. Además, su uso de repositorios en Git 
+    con participación equitativa entre los tres integrantes es un aspecto fundamental que refuerza buenas prácticas de ingeniería de 
+    software en entornos colaborativos. Finalmente, la separación clara entre frontend, backend y APIs en aplicaciones Django distintas 
+    demuestra una arquitectura limpia y mantenible, facilitando futuras ampliaciones o modificaciones del sistema.
+
+
+
+-- A mejorar --
+
+    Sin embargo, hay aspectos en los que pueden profundizar para elevar aún más la calidad de su solución. En primer lugar, aunque el 
+    consumo de servicios externos funciona correctamente, sería recomendable implementar un manejo robusto de errores, incluyendo 
+    estrategias como timeouts controlados, reintentos inteligentes y mensajes de error amigables para el usuario en caso de fallos en la 
+    red o en los servicios consumidos. Esto no solo mejora la experiencia de usuario, sino que también aumenta la resiliencia de su 
+    aplicación frente a imprevistos comunes en entornos reales. En segundo lugar, si bien sus APIs están bien estructuradas, las 
+    validaciones en los serializadores podrían ser más estrictas, especialmente en cuanto a tipos de datos, rangos aceptables o formatos 
+    esperados, lo que ayudaría a prevenir inconsistencias o ataques por inyección de datos maliciosos. Una recomendación concreta en esta 
+    línea es considerar el uso de bibliotecas como Pydantic o esquemas de validación más avanzados dentro de Django REST Framework, 
+    que permiten definir contratos de datos más rigurosos y expresivos.
+
+
+
+    Continúen aplicando esta mentalidad de calidad en cada capa de su sistema, y no duden en explorar herramientas y patrones que les 
+    permitan anticiparse a posibles fallos antes de que ocurran. Felicidades nuevamente por el excelente trabajo entregado.
