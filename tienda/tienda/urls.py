@@ -43,7 +43,7 @@ urlpatterns = [
     path("formulario_modificacionperfil/", formulario_modificacionperfil, name="formulario_modificacionperfil"),
     path("formulario_pwolvidada/", formulario_pwolvidada, name="formulario_pwolvidada"),
     path("formulario_recuperarpw/", formulario_recuperarpw, name="formulario_recuperarpw"),
-    path("login/", iniciar_sesion, name="login"),
+    path("iniciar_sesion/", iniciar_sesion, name="iniciar_sesion"),
     path("logout/", cerrar_sesion, name="logout"),
     path("registro/", registro_usuario, name="registro_usuario"),
     path("api/", include('rest_api.urls'))
