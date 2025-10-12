@@ -12,17 +12,32 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import Categoria, Producto, Inventario
 from .serializers import CategoriaSerializer, ProductoSerializer, InventarioSerializer
 
+from requests.adapters import HTTPAdapter, Retry
+import time
+import logging
+
 # Create your views here.
 
 #Listas de los modelos (GET, POST)
+
+
+
+logger = logging.getLogger(__name__)
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def lista_Categoria(request):
     if request.method == 'GET':
+        start_time = time.time()
+
         categoria = Categoria.objects.all()
         serializer = CategoriaSerializer(categoria, many=True)
+
+        duration = time.time() - start_time
+        if duration > 2:  # si tarda más de 2 segundos
+            logger.warning(f"La consulta de categorías tardó {duration:.2f} segundos")
+
         return Response(serializer.data)
     
     elif request.method == 'POST':
@@ -39,8 +54,15 @@ def lista_Categoria(request):
 @permission_classes([IsAuthenticated])
 def lista_Producto(request):
     if request.method == 'GET':
+        start_time = time.time()
+
         producto = Producto.objects.all()
         serializer = ProductoSerializer(producto, many=True)
+
+        duration = time.time() - start_time
+        if duration > 2:  # si tarda más de 2 segundos
+            logger.warning(f"La consulta de productos tardó {duration:.2f} segundos")
+
         return Response(serializer.data)
     
     elif request.method == 'POST':
@@ -58,8 +80,15 @@ def lista_Producto(request):
 @permission_classes([IsAuthenticated])
 def lista_Inventario(request):
     if request.method == 'GET':
+        start_time = time.time()
+
         inventario = Inventario.objects.all()
         serializer = InventarioSerializer(inventario, many=True)
+
+        duration = time.time() - start_time
+        if duration > 2:  # si tarda más de 2 segundos
+            logger.warning(f"La consulta de inventario tardó {duration:.2f} segundos")
+
         return Response(serializer.data)
     
     elif request.method == 'POST':
@@ -84,7 +113,14 @@ def detalle_Categoria(request, id):
         return Response(status = status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
+        start_time = time.time()
+
         serializer = CategoriaSerializer(m)
+
+        duration = time.time() - start_time
+        if duration > 2:  # si tarda más de 2 segundos
+            logger.warning(f"La consulta de detalle categoría tardó {duration:.2f} segundos")
+
         return Response(serializer.data)
     
     elif request.method == 'PUT':
@@ -111,7 +147,14 @@ def detalle_Producto(request, id):
         return Response(status = status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
+        start_time = time.time()
+
         serializer = ProductoSerializer(m)
+
+        duration = time.time() - start_time
+        if duration > 2:  # si tarda más de 2 segundos
+            logger.warning(f"La consulta de detalle producto tardó {duration:.2f} segundos")
+
         return Response(serializer.data)
     
     elif request.method == 'PUT':
@@ -138,7 +181,14 @@ def detalle_Inventario(request, id):
         return Response(status = status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
+        start_time = time.time()
+
         serializer = InventarioSerializer(m)
+
+        duration = time.time() - start_time
+        if duration > 2:  # si tarda más de 2 segundos
+            logger.warning(f"La consulta de detalle inventario tardó {duration:.2f} segundos")
+
         return Response(serializer.data)
     
     elif request.method == 'PUT':
@@ -156,6 +206,39 @@ def detalle_Inventario(request, id):
 
 
 #APIS EXTERNAS
+def consumir_api_externa(method, url, headers=None, payload=None):
+    try:
+        session = requests.Session()
+        retries = Retry(
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[500, 502, 503, 504],
+        )
+        session.mount('http://', HTTPAdapter(max_retries=retries))
+        session.mount('https://', HTTPAdapter(max_retries=retries))
+
+        timeout = (5, 10)
+
+        if method.upper() == 'GET':
+            response = session.get(url, headers=headers, timeout=timeout)
+        elif method.upper() == 'POST':
+            response = session.post(url, headers=headers, json=payload, timeout=timeout)
+        else:
+            return {"error": "Método HTTP no soportado."}
+
+        response.raise_for_status()  # Lanza error si status_code >= 400
+        return response.json()
+
+    except requests.Timeout:
+        return {"error": "El servicio tardó demasiado en responder. Intente nuevamente más tarde."}
+    except requests.ConnectionError:
+        return {"error": "No se pudo conectar al servicio. Revise su conexión a internet."}
+    except requests.HTTPError as e:
+        return {"error": f"Error HTTP: {e.response.status_code} - {e.response.reason}"}
+    except Exception as e:
+        return {"error": f"Ocurrió un error inesperado: {str(e)}"}
+    
+
 
 @api_view(['GET'])
 def dispositivos(request):
@@ -166,9 +249,10 @@ def dispositivos(request):
 	"x-rapidapi-host": "mobile-phone-specs-database.p.rapidapi.com"
     }
 
-    response = requests.get(url, headers=headers)
+    data = consumir_api_externa('GET', url, headers=headers)
 
-    return Response(response.json())
+    return Response(data)
+
 
 @api_view(['GET'])
 def generarqr(request):
@@ -184,6 +268,6 @@ def generarqr(request):
         "Content-Type": "application/json"
     }
 
-    response = requests.post(url, json=payload, headers=headers)
+    data = consumir_api_externa('POST', url, headers=headers, payload=payload)
 
-    return Response(response.json())
+    return Response(data)

@@ -293,29 +293,3 @@ def login(request):
             'time': datetime.datetime.now(),
         }, status=status.HTTP_401_UNAUTHORIZED)
 """
-
-def get_datos_externos(url):
-    try:
-        # Configurar reintentos inteligentes
-        session = requests.Session()
-        retries = Retry(
-            total=3,              # número total de reintentos
-            backoff_factor=1,     # tiempo de espera exponencial (1s, 2s, 4s)
-            status_forcelist=[500, 502, 503, 504],  # errores que reintentan
-        )
-        session.mount('http://', HTTPAdapter(max_retries=retries))
-        session.mount('https://', HTTPAdapter(max_retries=retries))
-
-        # Timeout controlado (conecta en 5s, espera 10s por respuesta)
-        response = session.get(url, timeout=(5, 10))
-
-        return response.json()
-
-    except requests.Timeout:
-        return {"error": "El servicio tardó demasiado en responder. Intente nuevamente más tarde."}
-    except requests.ConnectionError:
-        return {"error": "No se pudo conectar al servicio. Revise su conexión a internet."}
-    except requests.HTTPError as e:
-        return {"error": f"Error HTTP: {e.response.status_code} - {e.response.reason}"}
-    except Exception as e:
-        return {"error": f"Ocurrió un error inesperado: {str(e)}"}
